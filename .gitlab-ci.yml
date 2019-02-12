@@ -6,7 +6,8 @@ services:
 stages:
   - build
   - test
-
+  - deploy
+  
 variables: 
   MYSQL_DATABASE: dev
   MYSQL_ROOT_PASSWORD: dev
@@ -14,11 +15,23 @@ variables:
   User: notroot
   Password: notrootdev
   Database: sushidb
-
-Code quality: 
-  stage: test 
-  script: bash ./gitlabtests.sh
+  
+cache:
+  paths:
+  - ~/.cache/pip/
 
 Build:
   stage: build
-  script: bash ./gitlabdeploy.sh
+  script: bash ./gitlab_build.sh
+  
+Code quality: 
+  stage: test 
+  script: 
+    - bash ./gitlab_tests.sh
+    - python3 manage.py test -k
+  
+Deploy:
+  stage: deploy
+  script: bash ./gitlab_deploygitlab_deploy.sh
+  
+  
