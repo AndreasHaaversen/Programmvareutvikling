@@ -15,5 +15,5 @@ variables:
 all_tests: 
   stage: test 
   script: bash ./gitlabtests.sh
-  stage: deploy
+  stage: build
   script: ./gitlabdeploy.sh
