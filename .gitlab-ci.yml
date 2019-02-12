@@ -4,7 +4,6 @@ services:
   - mysql:latest
 
 stages:
-  - build
   - test
   - deploy
   
@@ -16,10 +15,6 @@ variables:
   Password: notrootdev
   Database: sushidb
 
-Build:
-  stage: build
-  script: bash ./gitlab_build.sh
-  
 Code quality: 
   stage: test 
   script: 
@@ -28,6 +23,6 @@ Code quality:
   
 Deploy:
   stage: deploy
-  script: bash ./gitlab_deploygitlab_deploy.sh
+  script: bash ./gitlab_deploy.sh
   
   
