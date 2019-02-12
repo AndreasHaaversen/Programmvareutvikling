@@ -16,4 +16,4 @@ all_tests:
   stage: test 
   script: bash ./gitlabtests.sh
   stage: build
-  script: ./gitlabdeploy.sh
+  script: bash ./gitlabdeploy.sh
