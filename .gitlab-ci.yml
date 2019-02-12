@@ -28,7 +28,7 @@ Code quality:
   stage: test 
   script: 
     - bash ./gitlab_tests.sh
-    - python3 manage.py test -k
+    - python3 ./demo/manage.py test -k
   
 Deploy:
   stage: deploy
