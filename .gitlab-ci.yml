@@ -1,3 +1,8 @@
+image: python:latest
+
+services:
+  - mysql:latest
+
 stages:
   - build
   - test
@@ -10,8 +15,10 @@ variables:
   Password: notrootdev
   Database: sushidb
 
-all_tests: 
+Code quality: 
   stage: test 
   script: bash ./gitlabtests.sh
+
+Build:
   stage: build
   script: bash ./gitlabdeploy.sh
