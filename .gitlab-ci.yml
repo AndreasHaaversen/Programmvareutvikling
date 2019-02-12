@@ -15,10 +15,6 @@ variables:
   User: notroot
   Password: notrootdev
   Database: sushidb
-  
-cache:
-  paths:
-  - ~/.cache/pip/
 
 Build:
   stage: build
