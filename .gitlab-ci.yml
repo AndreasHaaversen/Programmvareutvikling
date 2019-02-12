@@ -1,0 +1,22 @@
+  #image: dockerimagehere: latest 
+
+  services: 
+  - mysql: latest 
+
+  stages: 
+  - test 
+  - deploy 
+
+  variables: 
+  # Configure mysql environment variables (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: dev
+  MYSQL_ROOT_PASSWORD: dev
+  Host: mysql
+  User: notroot
+  Password: notrootdev
+  Database: sushidb
+
+  all_tests: 
+  stage: test 
+  script: 
+  - bash ./gitlabtests.sh
