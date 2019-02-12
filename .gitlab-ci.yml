@@ -1,7 +1,7 @@
   #image: dockerimagehere: latest 
 
-  services: 
-  - mysql: latest 
+  #services: 
+  #- mysql: latest 
 
   stages: 
   - test 
@@ -20,3 +20,5 @@
   stage: test 
   script: 
   - bash ./gitlabtests.sh
+  stage: deploy
+  - bash ./gitlabdeploy.sh
