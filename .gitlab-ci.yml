@@ -15,7 +15,6 @@ variables:
   DB_USERNAME: root
 
 Code quality: 
-  image: mysql
   stage: test 
   script: 
     - bash ./gitlab_tests.sh
