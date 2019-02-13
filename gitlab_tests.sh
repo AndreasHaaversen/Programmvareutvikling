@@ -2,7 +2,7 @@
 echo "************************"
 echo "******** Update ********"
 echo "************************"
-pacman -Syu python mariadb-clients --noconfirm
+pacman -Syu python3 mariadb-clients --noconfirm
 #echo "*********************************"
 #echo "******** OS dependencies ********"
 #echo "*********************************"
@@ -11,14 +11,14 @@ echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python get-pip.py
-pip install --upgrade pip
-pip install -r requirements.txt
+python3 get-pip.py
+pip3 install --upgrade pip
+pip3 install -r requirements.txt
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
 python -V
-pip freeze
+pip3 freeze
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
