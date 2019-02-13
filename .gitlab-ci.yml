@@ -8,12 +8,8 @@ stages:
   - deploy
   
 variables: 
-  MYSQL_DATABASE: dev
-  MYSQL_ROOT_PASSWORD: dev
-  Host: mysql
-  User: notroot
-  Password: notrootdev
-  Database: sushidb
+  MYSQL_DATABASE: nigirifalls_db
+  MYSQL_ROOT_PASSWORD: de
 
 Code quality: 
   stage: test 
