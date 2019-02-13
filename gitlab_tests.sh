@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-echo "**************************************"
-echo "******** Pip dependencies get ********"
-echo "**************************************"
+echo "***********************************"
+echo "******** Update repository ********"
+echo "***********************************"
+apt-get -y update
+echo "*****************************************"
+echo "******** Pip/OS dependencies get ********"
+echo "*****************************************"
 #pip install --upgrade pip
 pip install -r requirements.txt
+apt-get install mysql-client libmysqlclient-dev
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
