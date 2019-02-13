@@ -6,7 +6,7 @@ apt-get -y update
 echo "*********************************"
 echo "******** OS dependencies ********"
 echo "*********************************"
-apt-get install -y mariadb-client python3
+apt-get install -y mysql-client
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"

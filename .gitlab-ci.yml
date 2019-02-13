@@ -2,6 +2,7 @@ image: alpine:latest
 
 services:
   - mysql:latest
+  command: --default-authentication-plugin=mysql_native_password
 
 stages:
   - stage
@@ -17,5 +18,4 @@ variables:
 Code quality: 
   stage: test 
   script: 
-    - RUN apk add --no-cache bash
     - bash ./gitlab_tests.sh
