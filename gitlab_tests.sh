@@ -6,7 +6,7 @@ apt-get -y update
 echo "*********************************"
 echo "******** OS dependencies ********"
 echo "*********************************"
-apt-get install -y mariadb-client
+apt-get install -y mariadb-client mariadb-server
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
@@ -17,7 +17,7 @@ echo "******** Zone install step ********"
 echo "***********************************"
 python -V
 pip freeze
-systemctl status mariadb
+service mariadb start
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
