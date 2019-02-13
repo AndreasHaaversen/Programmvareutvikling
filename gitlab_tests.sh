@@ -11,8 +11,7 @@ echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
 #pip install --upgrade pip
-pip install -r requirements.
-service mysql start
+pip install -r requirements.txt
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
@@ -21,7 +20,7 @@ pip freeze
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
-mysql -u root -pdev -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
+mysql -u root -pdev -h mysql -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
