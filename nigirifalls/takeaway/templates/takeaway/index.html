@@ -1,0 +1,17 @@
+{% extends 'takeaway/base.html' %}
+
+{% block content %}
+
+{% if dish_list %}
+    {% for dish in dish_list %}
+        <div class="item">
+        <span>
+            {{ dish.name }}
+            <img src={%  %}
+        </span>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No dishes are availible.</p>
+{% endif %}
+{% endblock %}

@@ -25,12 +25,13 @@ SECRET_KEY = '_r9ls)x&58-sx&cg=w%&p6y=#&hyl3((-ez_gzq$^##le#358)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nigirifalls.herokuapp.com']
+ALLOWED_HOSTS = ['nigirifalls.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'takeaway.apps.TakeawayConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
