@@ -16,7 +16,7 @@ python3 ./nigirifalls/manage.py test -k
 echo "***********************************************"
 echo "******** Pycodestyle Style Guide check ********"
 echo "***********************************************"
-pycodestyle .
+pycodestyle . --ignore=E501
 echo "************************"
 echo "******** Finish ********"
 echo "************************"
