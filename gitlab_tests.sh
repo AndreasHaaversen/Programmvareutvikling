@@ -22,10 +22,8 @@ service mysql start
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
-mysql -u root -h mysql -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
-mysql -u root -h localhost -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
-mysql -u root -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
-mysql -u root -h python -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
+
+mysql -u root -Bse "create database nigirifalls_db default character set utf8 default collate utf8_bin;GRANT ALL PRIVILEGES ON nigirifalls_db.* to dev@'%' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON nigirifalls_db.* to dev@hostname IDENTIFIED BY 'dev';"
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
