@@ -11,12 +11,8 @@ variables:
   MYSQL_DATABASE: nigirifalls_db
   MYSQL_ROOT_PASSWORD: dev
 
-connect:
-  image: mysql
-  script:
-  - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
-
 Code quality: 
   stage: test 
   script: 
     - bash ./gitlab_tests.sh
+    - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
