@@ -2,11 +2,11 @@
 echo "************************"
 echo "******** Update ********"
 echo "************************"
-pacman -Syu
-echo "*********************************"
-echo "******** OS dependencies ********"
-echo "*********************************"
-apt-get install -y mysql-client
+pacman -Syu python3 python3-pip mysql-client mysql-server --noconfirm
+#echo "*********************************"
+#echo "******** OS dependencies ********"
+#echo "*********************************"
+#apt-get install -y mysql-client
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
