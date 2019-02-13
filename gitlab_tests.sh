@@ -8,7 +8,7 @@ echo "******** Pip/OS dependencies get ********"
 echo "*****************************************"
 #pip install --upgrade pip
 pip install -r requirements.txt
-apt-get install mysql-client libmysqlclient-dev
+apt-get install mysql-client
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
