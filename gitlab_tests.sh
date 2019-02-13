@@ -23,7 +23,7 @@ echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
 
-mysql -u root -Bse "create database nigirifalls_db default character set utf8 default collate utf8_bin;GRANT ALL PRIVILEGES ON nigirifalls_db.* to dev@'%' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON nigirifalls_db.* to dev@hostname IDENTIFIED BY 'dev';"
+mysql -u root -h localhost -Bse "create database nigirifalls_db default character set utf8 default collate utf8_bin;GRANT ALL PRIVILEGES ON nigirifalls_db.* to dev@'%' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON nigirifalls_db.* to dev@hostname IDENTIFIED BY 'dev';"
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
