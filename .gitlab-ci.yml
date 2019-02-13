@@ -1,7 +1,7 @@
-image: archlinux/base:latest
+image: python:latest
 
 services:
-  - mysql:latest
+  - mariadb:latest
 
 stages:
   - stage
