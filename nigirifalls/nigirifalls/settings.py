@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'nigirifalls_db',
-        'USER': 'root',
+        'USER': 'dev',
         'PASSWORD': 'dev',
         'HOST': 'mysql',
         'PORT': '3306',

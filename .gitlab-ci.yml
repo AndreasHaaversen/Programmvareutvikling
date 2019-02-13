@@ -1,18 +1,9 @@
 image: python:latest
 
-services:
-  - mariadb:latest
-
 stages:
   - stage
   - test
   - deploy
-  
-variables: 
-  MYSQL_DATABASE: nigirifalls_db
-  MYSQL_ROOT_PASSWORD: dev
-  MYSQL_USER: dev
-  MYSQL_PASSWORD: dev
 
 Code quality: 
   stage: test 

@@ -6,7 +6,7 @@ apt-get -y update
 echo "*********************************"
 echo "******** OS dependencies ********"
 echo "*********************************"
-apt-get install -y mariadb-client
+apt-get install -y mariadb-server mariadb-client
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
@@ -17,9 +17,11 @@ echo "******** Zone install step ********"
 echo "***********************************"
 python -V
 pip freeze
+systemctl status mariadb
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
+mysql -u root -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
