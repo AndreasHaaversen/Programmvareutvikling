@@ -6,7 +6,7 @@ apt-get -y update
 echo "*********************************"
 echo "******** OS dependencies ********"
 echo "*********************************"
-apt-get install -y mariadb-server mariadb-client
+apt-get install -y mariadb-client python3
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
