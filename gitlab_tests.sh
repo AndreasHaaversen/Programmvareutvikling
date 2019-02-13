@@ -16,7 +16,11 @@ python3 ./nigirifalls/manage.py test -k
 echo "***********************************************"
 echo "******** Pycodestyle Style Guide check ********"
 echo "***********************************************"
-pycodestyle .
+if pycodestyle . --ignore=E501; then
+    printf 'OK\n'
+else
+    printf 'Failed\n'
+fi
 echo "************************"
 echo "******** Finish ********"
 echo "************************"
