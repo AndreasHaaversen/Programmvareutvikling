@@ -2,7 +2,7 @@
 echo "************************"
 echo "******** Update ********"
 echo "************************"
-pacman -Syu python3 python3-pip mysql-client mysql-server --noconfirm
+pacman -Syu python python-pip mariadb-clients --noconfirm
 #echo "*********************************"
 #echo "******** OS dependencies ********"
 #echo "*********************************"
