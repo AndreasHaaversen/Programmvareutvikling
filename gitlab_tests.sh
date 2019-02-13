@@ -20,7 +20,6 @@ pip freeze
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
-mysql -u root -pdev -h mariadb -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
