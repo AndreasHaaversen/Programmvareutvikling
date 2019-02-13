@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
-echo "************************"
-echo "******** Update ********"
-echo "************************"
-apt-get -y update
-echo "****************************************"
-echo "******** OS Docker dependencies ********"
-echo "****************************************"
-apt-get -y install mysql-client
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
@@ -20,7 +12,6 @@ pip freeze
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
-mysql -u root -pdev -h mysql -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
