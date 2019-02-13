@@ -10,9 +10,9 @@ stages:
   
 variables: 
   MYSQL_DATABASE: nigirifalls_db
-  MYSQL_ROOT_PASSWORD: dev
+  MYSQL_ROOT_PASSWORD: root
   DB_HOST: mysql
-  DB_USERNAME: dev
+  DB_USERNAME: root
 
 Code quality: 
   stage: test 
