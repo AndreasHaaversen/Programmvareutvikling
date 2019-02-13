@@ -9,4 +9,3 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Dish.objects.order_by('dish_type')
-    

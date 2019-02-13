@@ -4,13 +4,14 @@ from django.core.validators import ValidationError
 
 from .models import Dish
 
+
 def create_dish(name, description, price, dish_type):
     """
     Create a question with the named parameters.
     """
-    return Dish.objects.create(name=name, description=description, price=price, dish_type=dish_type)
+    return Dish.objects.create(name=name, description=description,
+                               price=price, dish_type=dish_type)
 
-# Create your tests here.
 
 class DishIndexViewTests(TestCase):
     def test_no_dishes(self):
@@ -28,5 +29,5 @@ class DishIndexViewTests(TestCase):
         """
         create_dish("Maki", "Delicious roll", 123.45, "rolls")
         response = self.client.get(reverse('takeaway:index'))
-        self.assertQuerysetEqual(response.context['dish_list'], ['<Dish: Maki>'])
-
+        self.assertQuerysetEqual(response.context['dish_list'],
+                                 ['<Dish: Maki>'])
