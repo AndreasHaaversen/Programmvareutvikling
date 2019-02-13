@@ -4,15 +4,18 @@ services:
   - mysql:latest
 
 stages:
+  - stage
   - test
   - deploy
   
 variables: 
   MYSQL_DATABASE: nigirifalls_db
   MYSQL_ROOT_PASSWORD: dev
+  DB_HOST: mysql
+  DB_USERNAME: root
 
 Code quality: 
+  image: mysql
   stage: test 
   script: 
     - bash ./gitlab_tests.sh
-    - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"

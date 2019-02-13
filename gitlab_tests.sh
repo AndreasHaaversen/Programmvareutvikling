@@ -3,7 +3,8 @@ echo "**************************************"
 echo "******** Pip dependencies get ********"
 echo "**************************************"
 #pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements.
+service mysql start
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
