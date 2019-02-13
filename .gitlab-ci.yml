@@ -19,10 +19,3 @@ Code quality:
   stage: test 
   script: 
     - bash ./gitlab_tests.sh
-    - python3 ./demo/manage.py test -k
-  
-Deploy:
-  stage: deploy
-  script: bash ./gitlab_deploy.sh
-  
-  

@@ -9,6 +9,10 @@ echo "******** Zone install step ********"
 echo "***********************************"
 python -V
 pip freeze
+echo "*************************************"
+echo "******** Django default test ********"
+echo "*************************************"
+python3 ./demo/manage.py test -k
 echo "************************"
 echo "******** Finish ********"
 echo "************************"
