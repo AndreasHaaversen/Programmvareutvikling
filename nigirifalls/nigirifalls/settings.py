@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'nigirifalls_db',
         'USER': 'dev',
         'PASSWORD': 'dev',
-        'HOST': '127.0.0.1',
+        'HOST': 'mysql',
         'PORT': '3306',
     }
 }

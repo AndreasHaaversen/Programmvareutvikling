@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
-echo "***********************************"
-echo "******** Update repository ********"
-echo "***********************************"
-apt-get -y update
-echo "*****************************************"
-echo "******** Pip/OS dependencies get ********"
-echo "*****************************************"
+echo "**************************************"
+echo "******** Pip dependencies get ********"
+echo "**************************************"
 #pip install --upgrade pip
 pip install -r requirements.txt
-apt-get -y install default-mysql-client
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
@@ -17,7 +12,6 @@ pip freeze
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
-mysql -u root -pdev -Bse "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';"
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
