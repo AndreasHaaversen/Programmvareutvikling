@@ -12,7 +12,7 @@ pip freeze
 echo "*************************************"
 echo "******** Django default test ********"
 echo "*************************************"
-python3 ./demo/manage.py test -k
+python3 ./nigirifalls/manage.py test -k
 echo "************************"
 echo "******** Finish ********"
 echo "************************"
