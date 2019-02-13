@@ -17,4 +17,5 @@ variables:
 Code quality: 
   stage: test 
   script: 
+    - RUN apk add --no-cache bash
     - bash ./gitlab_tests.sh
