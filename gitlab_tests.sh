@@ -2,7 +2,7 @@
 echo "************************"
 echo "******** Update ********"
 echo "************************"
-pacman -Syu python python-pip mariadb-clients --noconfirm
+pacman -Syu python mariadb-clients --noconfirm
 #echo "*********************************"
 #echo "******** OS dependencies ********"
 #echo "*********************************"
@@ -10,7 +10,7 @@ pacman -Syu python python-pip mariadb-clients --noconfirm
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
-#pip install --upgrade pip
+pip install --upgrade pip
 pip install -r requirements.txt
 echo "***********************************"
 echo "******** Zone install step ********"
