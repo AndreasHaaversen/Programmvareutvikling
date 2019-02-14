@@ -4,7 +4,6 @@ import decimal
 import os
 
 
-# TODO: FIX MEG!
 def get_image_path(instance, filename):
     return os.path.join('dish_img', str(instance.id), filename)
 
