@@ -6,8 +6,9 @@
     {% for dish in dish_list %}
         <div class="item">
         <span>
+            <img src= {{ dish.image.url }} style="width:150px;height:150px;">
             {{ dish.name }}
-            <img src={%  %}
+            {{ dish.description }}
         </span>
         </div>
     {% endfor %}

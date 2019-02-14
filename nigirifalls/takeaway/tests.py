@@ -9,7 +9,8 @@ def create_dish(name, description, price, dish_type):
     """
     Create a question with the named parameters.
     """
-    return Dish.objects.create(name=name, description=description,
+    return Dish.objects.create(name=name, image="index.jpg",
+                               description=description,
                                price=price, dish_type=dish_type)
 
 
