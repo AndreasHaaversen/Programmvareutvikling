@@ -1,15 +1,9 @@
 image: python:latest
 
-services:
-  - mysql:latest
-
 stages:
+  - stage
   - test
   - deploy
-  
-variables: 
-  MYSQL_DATABASE: nigirifalls_db
-  MYSQL_ROOT_PASSWORD: de
 
 Code quality: 
   stage: test 
