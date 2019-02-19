@@ -1,0 +1,28 @@
+body {
+    display: grid;
+    grid-gap: 0.2vw;
+    height: 100vh;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 120px 1fr 61px;
+    grid-template-areas: "header   header"
+                       "sidebar content"
+                       "footer footer"; 
+}
+
+div.header {
+    grid-area: header;
+}
+
+div.main {
+    grid-area: content;
+}
+div.main {
+    display: grid;  
+    grid-gap: 0.2vw;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+div.category {
+    grid-column-start: 1;
+}
