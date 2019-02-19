@@ -6,30 +6,33 @@ body {
     font-family: -apple-system, BlinkMacSystemFont,
     “Segoe UI”, “Roboto”, “Oxygen”, “Ubuntu”, “Cantarell”,
     “Fira Sans”, “Droid Sans”, “Helvetica Neue”, sans-serif;
-
-    display: grid;
-    grid-gap: 0.2vw;
-    height: 100vh;
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: 120px 1fr 61px;
-    grid-template-areas: "header   header"
-                       "sidebar content"
-                       "footer footer"; 
 }
 
-div.header {
-    grid-area: header;
-}
-div.main {
-    grid-area: content;
-}
-div.main {
-    display: grid;  
-    grid-gap: 0.2vw;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: whitesmoke
 }
 
-div.category {
-    grid-column-start: 1;
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: lightgray
+}
+
+h1 {
+    display: inline;
 }

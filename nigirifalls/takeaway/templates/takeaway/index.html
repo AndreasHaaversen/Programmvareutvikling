@@ -1,7 +1,11 @@
 {% extends 'takeaway/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet", type="text/css" href="{% static 'takeaway/index_style.css' %}"> 
+{% endblock %}
 
 {% block content %}
-
     {% if dish_list %}
         {% regroup dish_list by get_dish_type_display as dish_list_by_type %}
         <div class="main">
