@@ -1,0 +1,28 @@
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Nigiri Falls Takeaway</title>
+
+    <link rel="stylesheet", type="text/css" href="{% static 'takeaway/style.css' %}">
+    {% block extra_css %}
+    {% endblock extra_css %}
+</head>
+
+<body>
+    <div class="header">
+        <img src={% static 'takeaway/images/logo.png'%} style="width:150px;height:150px;float:left">
+        <h1>Nigiri Falls</h1>
+        <ul>
+            <li><a href={% url 'takeaway:index' %}>Kontakt</a></li>
+            <li><a href={% url 'takeaway:index' %}>Takeaway</a></li>
+            <li><a href={% url 'takeaway:index' %}>Bordbestilling</a></li> 
+            <li><a href={% url 'takeaway:index' %}>Hjem</a></li>
+        </ul> 
+        <hr>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
