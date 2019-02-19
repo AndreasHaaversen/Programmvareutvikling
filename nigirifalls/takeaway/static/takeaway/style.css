@@ -27,6 +27,9 @@ div.main {
     display: grid;  
     grid-gap: 0.2vw;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
 }
 
+div.category {
+    grid-column-start: 1;
+}
