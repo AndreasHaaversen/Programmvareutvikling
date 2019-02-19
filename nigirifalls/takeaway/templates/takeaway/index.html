@@ -2,17 +2,17 @@
 
 {% block content %}
 
-{% if dish_list %}
-    {% for dish in dish_list %}
-        <div class="item">
-        <span>
-            <img src= {{ dish.image.url }} style="width:150px;height:150px;">
-            {{ dish.name }}
-            {{ dish.description }}
-        </span>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>No dishes are availible.</p>
-{% endif %}
+    {% if dish_list %}
+        {% for dish in dish_list %}
+            <div class="item">
+                <span>
+                    <img src= {{ dish.image.url }} style="width:150px;height:150px;">
+                    {{ dish.name }} <br>
+                    {{ dish.description }}
+                </span>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No dishes are availible.</p>
+    {% endif %}
 {% endblock %}
