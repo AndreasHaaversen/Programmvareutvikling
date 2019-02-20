@@ -28,10 +28,10 @@ class Dish(models.Model):
 
 class OrderInfo(models.Model):
 
-    foreign_key      = models.Integerfield()
+    foreign_key      = models.IntegerField()
     name_of_customer = models.CharField(max_length=50)
-    number           = models.Integerfield()
-    pickup_time      = models.Integerfield()
+    number           = models.IntegerField()
+    pickup_time      = models.IntegerField()
     comment          = models.CharField(max_length=250)
     status           = models.CharField(max_length=10)
 
