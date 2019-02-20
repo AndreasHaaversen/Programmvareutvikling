@@ -7,6 +7,7 @@ def get_image_path(instance, filename):
 
 
 class Dish(models.Model):
+
     DISH_TYPE_CHOICES = (
         ('maki', 'Maki'),
         ('nigiri', 'Nigiri'),
@@ -28,11 +29,18 @@ class Dish(models.Model):
 
 class OrderInfo(models.Model):
 
-    foreign_key      = models.IntegerField()
+    ORDER_STATUS_CHOICES = (
+        ('motatt', 'Motatt'),
+        ('prod', 'I produksjon'),
+        ('klar', 'Klar for henting'),
+        ('hentet', 'Hentet av kunde'),
+        ('kansellert', 'Ordre ble kansellert'),
+    )
+
+    foreign_key      = models.ManyToManyField(Dish, on_delete=models.PROTECT)
     name_of_customer = models.CharField(max_length=50)
-    number           = models.IntegerField()
-    pickup_time      = models.IntegerField()
+    phone_number     = models.IntegerField()
+    pickup_time      = models.DateTimeField()
     comment          = models.CharField(max_length=250)
-    status           = models.CharField(max_length=10)
-
-
+    status           = models.CharField(max_length=10, choices=ORDER_STATUS_CHOICES,
+                                        default='motatt')
