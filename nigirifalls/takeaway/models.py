@@ -37,7 +37,7 @@ class OrderInfo(models.Model):
         ('kansellert', 'Ordre ble kansellert'),
     )
 
-    foreign_key = models.ManyToManyField(Dish, on_delete=models.PROTECT)
+    foreign_key = models.ManyToManyField(Dish)
     name_of_customer = models.CharField(max_length=50)
     phone_number = models.IntegerField()
     pickup_time = models.DateTimeField()
