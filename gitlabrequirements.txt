@@ -1,5 +1,6 @@
 pytz
 pycodestyle
+mysqlclient
 whitenoise
 Django
 Pillow

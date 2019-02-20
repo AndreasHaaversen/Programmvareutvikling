@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Testing script
+echo "Hostname: " $(cat /etc/hostname)
 echo "************************"
 echo "******** Update ********"
 echo "************************"
@@ -6,24 +8,24 @@ apt-get -y update
 echo "*********************************"
 echo "******** OS dependencies ********"
 echo "*********************************"
-apt-get install -y mariadb-client mariadb-server
+# NB: For when I get a GNU/Linux install or Hyper-V, it is wise to combine Python image with mariadb-client baked-in to then
+# Docker image in order to avoid having to install it every time the pipeline runs.
+apt-get install -y mariadb-client
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
 #pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r gitlabrequirements.txt
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
 python -V
 pip freeze
-service mariadb start
-service mysql start
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
-
-mysql -u root -h localhost -Bse "create database nigirifalls_db default character set utf8 default collate utf8_bin;GRANT ALL PRIVILEGES ON nigirifalls_db.* to dev@'localhost' IDENTIFIED BY 'dev';"
+echo "SELECT 'OK';CREATE USER 'dev'@'mariadb' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'mariadb' WITH GRANT OPTION;" | mysql --user=root --password=rootpassword --host=mariadb nigirifalls_db
+python3 ./nigirifalls/manage.py makemigrations
 python3 ./nigirifalls/manage.py migrate
 echo "*************************************"
 echo "******** Django default test ********"
