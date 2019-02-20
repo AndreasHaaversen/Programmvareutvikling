@@ -4,13 +4,13 @@ body {
     height: 100vh;
     grid-template-columns: 150px 1fr;
     grid-template-rows: 120px 1fr 61px;
-    grid-template-areas: "header   header"
-                       "sidebar content"
-                       "footer footer"; 
+    grid-template-areas: "header header"
+                        "sidebar content"
+                        "footer footer"; 
 }
 
-div.header {
-    grid-area: header;
+div.footer {
+    grid-area: footer;
 }
 
 div.main {
