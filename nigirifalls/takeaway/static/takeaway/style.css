@@ -8,6 +8,10 @@ body {
     “Fira Sans”, “Droid Sans”, “Helvetica Neue”, sans-serif;
 }
 
+div.header {
+    grid-area: header;
+}
+
 ul {
     display: inline;
     list-style-type: none;
