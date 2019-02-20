@@ -15,7 +15,7 @@ echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
 #pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r gitlabrequirements.txt
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
