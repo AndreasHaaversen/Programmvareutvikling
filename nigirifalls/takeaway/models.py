@@ -24,3 +24,15 @@ class Dish(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class OrderInfo(models.Model):
+
+    foreign_key      = models.Integerfield()
+    name_of_customer = models.CharField(max_length=50)
+    number           = models.Integerfield()
+    pickup_time      = models.Integerfield()
+    comment          = models.CharField(max_length=250)
+    status           = models.CharField(max_length=10)
+
+
