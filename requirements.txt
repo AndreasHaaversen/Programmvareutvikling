@@ -4,3 +4,4 @@ mysqlclient
 whitenoise
 Django
 Pillow
+django-crispy-forms
