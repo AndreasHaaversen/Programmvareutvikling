@@ -37,10 +37,17 @@ class OrderInfo(models.Model):
         ('kansellert', 'Ordre ble kansellert'),
     )
 
-    foreign_key = models.ManyToManyField(Dish)
+    dishes = models.ManyToManyField(Dish)
     name_of_customer = models.CharField(max_length=50)
     phone_number = models.IntegerField()
     pickup_time = models.DateTimeField()
     comment = models.CharField(max_length=250)
     status = models.CharField(max_length=10, choices=ORDER_STATUS_CHOICES,
                               default='motatt')
+
+    def get_order_items(self):
+        return self.dishes.all()
+    
+    def get_order_total(self):
+        return sum([dish.price for dish in self.dishes.all()])
+    
