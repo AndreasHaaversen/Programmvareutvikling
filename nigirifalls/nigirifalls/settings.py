@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['nigirifalls.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'takeaway.apps.TakeawayConfig',
+    'cart.apps.CartConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,3 +128,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CART_SESSION_ID ='cart'
