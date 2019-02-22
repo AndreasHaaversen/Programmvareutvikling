@@ -47,7 +47,6 @@ class OrderInfo(models.Model):
 
     def get_order_items(self):
         return self.dishes.all()
-    
+
     def get_order_total(self):
         return sum([dish.price for dish in self.dishes.all()])
-    
