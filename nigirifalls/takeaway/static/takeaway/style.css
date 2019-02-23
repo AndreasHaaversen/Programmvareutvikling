@@ -12,6 +12,10 @@ div.header {
     grid-area: header;
 }
 
+div.subheader {
+    float: right;
+}
+
 ul {
     display: inline;
     list-style-type: none;

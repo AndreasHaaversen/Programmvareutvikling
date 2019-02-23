@@ -4,8 +4,6 @@ from .models import OrderInfo, Dish
 
 class OrderForm(forms.ModelForm):
 
-    dishes = forms.ModelMultipleChoiceField(queryset=Dish.objects.order_by('dish_type'))
-
     class Meta:
         model = OrderInfo
         fields = ['name_of_customer', 'phone_number',

@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block extra_css %}
-    <link rel="stylesheet", type="text/css" href="{% static 'takeaway/index_style.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'takeaway/index_style.css' %}"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {% endblock %}
 
@@ -19,11 +19,12 @@
             {% for dish in dish_type.list %}
                 <div class="item">
                     <span>
-                        <img src= {{ dish.image.url }} style="width:150px;height:150px;">
+                        <img src= {{ dish.image.url }} style="width:150px;height:150px;"><br/>
                         {{ dish.name }} <br/>
                         {{ dish.description }} <br/>
                         Pris: {{ dish.price }} .- kr
                         <form action="{% url "cart:cart_add" dish.id %}" method="post">
+                            {{ add_dish_form }}
                             {% csrf_token %}
                             <input type="submit" value="Legg til">
                         </form>

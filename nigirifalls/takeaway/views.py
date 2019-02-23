@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse
 from django.views import generic
 from .models import Dish, OrderInfo
 from cart.forms import CartAddDishForm
+from cart.cart import Cart
 
 
 class IndexView(generic.ListView):
@@ -13,6 +14,7 @@ class IndexView(generic.ListView):
     def get_context_data(self):
         context = super().get_context_data()
         context['add_dish_form'] = CartAddDishForm()
+        context['cart'] = Cart(self.request)
         return context
 
 

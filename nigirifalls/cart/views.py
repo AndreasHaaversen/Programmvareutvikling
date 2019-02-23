@@ -11,7 +11,7 @@ def cart_add(request, dish_id):
     dish = get_object_or_404(Dish, id=dish_id)
     form = CartAddDishForm(request.POST)
     if form.is_valid():
-        cd = form.changed_data
+        cd = form.cleaned_data
         cart.add(
             dish=dish,
             quantity=cd['quantity'],
@@ -29,4 +29,8 @@ def cart_remove(request, dish_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    for item in cart:
+            item['update_quantity_form'] = CartAddDishForm(
+                initial={'quantity': item['quantity'],
+                         'update': True})
     return render(request, 'cart/detail.html', {'cart': cart})

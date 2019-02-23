@@ -7,9 +7,6 @@
 
 {% block content %}
     <h1>Din handlevogn</h1>
-    {% if cart is None %}
-        <h1>No cart exists</h1>
-    {% endif %}
 
     <table class="cart">
         <thead>
@@ -31,7 +28,7 @@
                     </td>
                     <td>{{ dish.name }}</td>
                     <td>
-                        <form action="{% url "car:cart_add" dish.id %}" method="POST">
+                        <form action="{% url "cart:cart_add" dish.id %}" method="POST">
                             {% csrf_token %}
                             {{ item.update_quantity_form.quantity }}
                             {{ item.update_quantity_form.update }}
@@ -47,7 +44,7 @@
         <tr class="total">
             <td>Total</td>
             <td colspan="4"></td>
-            <td class="num">{{ cart.get_total_price }}</td>
+            <td class="num">{{ cart.get_total_price }} kr.</td>
         </tr>
     </tbody>
 </table>
