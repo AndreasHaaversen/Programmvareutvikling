@@ -1,0 +1,8 @@
+{% extends 'takeaway/base.html' %}
+
+{% block content %}
+    <h1>Thank you!</h1>
+    <p>Your order has been placed.</p>
+    <p>Your order number is <strong>{{ order.id }}</strong> 
+    and can be picked up at <strong>{{ order.pickup_time }}</strong></p>
+{% endblock content %}
