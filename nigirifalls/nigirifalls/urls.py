@@ -22,5 +22,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('takeaway/', include('takeaway.urls')),
+    path('cart/', include('cart.urls')),
     path('', views.takeawayredirect, name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,7 +11,7 @@
 {% block content %}
     {% if dish_list %}
         {% regroup dish_list by get_dish_type_display as dish_list_by_type %}
-        <div class="main">
+        <div class="content">
         {% for dish_type in dish_list_by_type %}
             <div class="category">
                 <h1><p>{{ dish_type.grouper }}</p></h1>
@@ -23,6 +23,10 @@
                         {{ dish.name }} <br/>
                         {{ dish.description }} <br/>
                         Pris: {{ dish.price }} .- kr
+                        <form action="{% url "cart:cart_add" dish.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Legg til">
+                        </form>
                     </span>
                 </div>
             {% endfor %}
@@ -31,17 +35,6 @@
     {% else %}
         <p>No dishes are availible.</p>
     {% endif %}
-
-    <div class="footer">
-      <div class="form">
-
-      <form method='post'>
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="btn btn-primary" type="submit">Bestill</button>
-        </form> 
-      </div>
-    </div>
 {% endblock %}
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

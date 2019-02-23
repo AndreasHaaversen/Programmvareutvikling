@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Nigiri Falls Takeaway</title>
 
-    <link rel="stylesheet", type="text/css" href="{% static 'takeaway/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'takeaway/style.css' %}">
     {% block extra_css %}
     {% endblock extra_css %}
 </head>
@@ -22,6 +22,21 @@
         <hr>
     </div>
 
+    <div id="subheader">
+        <div class="cart">
+          {% with total_items=cart|length %}
+              {% if cart|length > 0 %}
+                Your cart: 
+                <a href="{% url "cart:cart_detail" %}">
+                  {{ total_items }} item{{ total_items|pluralize }},
+                  {{ cart.get_total_price }} kr.
+                </a>
+              {% else %}
+                Your cart is empty.
+              {% endif %}
+            {% endwith %}
+        </div>
+    </div>
     {% block content %}
     {% endblock %}
 

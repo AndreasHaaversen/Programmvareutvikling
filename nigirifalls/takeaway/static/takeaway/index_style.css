@@ -5,6 +5,7 @@ body {
     grid-template-columns: 150px 1fr;
     grid-template-rows: 120px 1fr 61px;
     grid-template-areas: "header header"
+                        "subheader subheader"
                         "sidebar content"
                         "footer footer"; 
 }
