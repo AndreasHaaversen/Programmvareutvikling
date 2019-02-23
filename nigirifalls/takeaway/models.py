@@ -45,11 +45,11 @@ class OrderInfo(models.Model):
     status = models.CharField(max_length=10, choices=ORDER_STATUS_CHOICES,
                               default='motatt')
 
-    def get_order_items(self):
-        return self.dishes.all()
+    def __str__(self):
+        return 'Order {}'.format(self.id)
 
     def get_order_total(self):
-        return sum([dish.price for dish in self.dishes.all()])
+        return sum(dish.price for dish in self.dishes.all())
 
 
 class OrderItem(models.Model):
