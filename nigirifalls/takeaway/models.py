@@ -37,8 +37,8 @@ class OrderInfo(models.Model):
         ('kansellert', 'Ordre ble kansellert'),
     )
 
-    dishes = models.ManyToManyField(Dish)
     name_of_customer = models.CharField(max_length=50)
+    email = models.EmailField()
     phone_number = models.IntegerField()
     pickup_time = models.DateTimeField()
     comment = models.CharField(max_length=250)
@@ -50,3 +50,20 @@ class OrderInfo(models.Model):
 
     def get_order_total(self):
         return sum([dish.price for dish in self.dishes.all()])
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(OrderInfo,
+                              related_name='dishes',
+                              on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish,
+                             related_name='otder_items',
+                             on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return '{}'.format(self.id)
+    
+    def get_cost(self):
+        return self.price * self.quantity
