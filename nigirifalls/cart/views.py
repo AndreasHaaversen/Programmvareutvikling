@@ -30,6 +30,6 @@ def cart_remove(request, dish_id):
 def cart_detail(request):
     cart = Cart(request)
     for item in cart:
-            item['update_quantity_form'] = CartAddDishForm(
-                initial={'quantity': item['quantity'], 'update': True})
+        item['update_quantity_form'] = CartAddDishForm(
+            initial={'quantity': item['quantity'], 'update': True})
     return render(request, 'cart/detail.html', {'cart': cart})
