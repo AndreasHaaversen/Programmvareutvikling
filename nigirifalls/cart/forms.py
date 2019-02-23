@@ -12,4 +12,4 @@ class CartAddDishForm(forms.Form):
         required=False,
         initial=False,
         widget=forms.HiddenInput
-        )
+    )
