@@ -41,7 +41,7 @@ class OrderInfo(models.Model):
     email = models.EmailField()
     phone_number = models.IntegerField()
     pickup_time = models.DateTimeField()
-    comment = models.CharField(max_length=250)
+    comment = models.CharField(max_length=250, blank=True)
     status = models.CharField(max_length=10, choices=ORDER_STATUS_CHOICES,
                               default='motatt')
 
