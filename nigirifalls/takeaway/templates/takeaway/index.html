@@ -18,10 +18,10 @@
             {% for dish in dish_type.list %}
                 <div class="item">
                     <span>
-                        <img src= {{ dish.image.url }} style="width:150px;height:150px;"><br/>
+                        <img src= {{ dish.image.url }} style="width:175px;height:175px;"><br/>
                         {{ dish.name }} <br/>
                         {{ dish.description }} <br/>
-                        Pris: {{ dish.price }} .- kr
+                        Pris: {{ dish.price }} kr.
                         <form action="{% url "cart:cart_add" dish.id %}" method="post">
                             {{ add_dish_form }}
                             {% csrf_token %}

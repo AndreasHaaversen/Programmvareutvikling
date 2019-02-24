@@ -57,7 +57,7 @@ class OrderItem(models.Model):
                               related_name='dishes',
                               on_delete=models.CASCADE)
     dish = models.ForeignKey(Dish,
-                             related_name='otder_items',
+                             related_name='order_items',
                              on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)

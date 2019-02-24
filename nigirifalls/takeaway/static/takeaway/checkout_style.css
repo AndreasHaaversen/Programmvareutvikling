@@ -1,0 +1,40 @@
+.order_info {
+    float:right;
+    width:300px;
+    background:#efefef;
+    padding:10px 20px;
+    color:#333;
+    border-bottom:4px solid grey;
+}
+
+.order_info h3 {
+    color:grey;
+}
+
+.order_info ul li {
+    margin:0;
+    padding:0;
+    font-size:14px;
+}
+
+.order_info p {
+    font-weight:bold;
+    float:right;
+}
+
+.order_info span {
+    float:right;
+}
+
+.order_form {
+    float: left;
+}
+
+input[type="submit"] {
+    color:#fff;
+    background: grey;
+    border-radius:4px;
+    padding:10px 20px;
+    font-size:14px;
+    border:0;
+}
