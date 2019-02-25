@@ -114,11 +114,13 @@ class CartDetailViewTests(TestCase):
         response = self.client.get(reverse('cart:cart_detail'))
         number_of_dishes = 5
 
-        for i in range(number_of_dishes):
-            dish = create_dish(str(i))
+        for i in range(1, number_of_dishes):
+            dish = create_dish(slug=str(i))
             self.client.post(reverse('cart:cart_add',
                              kwargs={'dish_id': dish.id, }),
                              {'quantity': 1, 'update': False})
+        
+        response = self.client.get(reverse('cart:cart_detail'))
 
-        for i in range(1, 6):
+        for i in range(1, number_of_dishes):
             self.assertContains(response, Dish.objects.get(id=i).name)
