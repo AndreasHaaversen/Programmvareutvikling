@@ -15,6 +15,14 @@ class OrderCreateForm(forms.ModelForm):
                 )
         return data
 
+    def clean_phone_number(self):
+        data = self.cleaned_data['phone_number']
+        if data < 10000000 or data > 99999999:
+            raise forms.ValidationError(
+                "Phone numbers must be 8 digits long"
+            )
+        return data
+
     class Meta:
         model = OrderInfo
         widgets = {
