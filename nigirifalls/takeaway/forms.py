@@ -1,8 +1,19 @@
+import datetime
+
 from django import forms
 from .models import OrderInfo, Dish
+from django.utils import timezone
 
 
 class OrderCreateForm(forms.ModelForm):
+
+    def clean_pickup_time(self):
+        data = self.cleaned_data['pickup_time']
+        if timezone.now() + datetime.timedelta(minutes=30) > data:
+            raise forms.ValidationError(
+                    "Pickup time must be at least 30 minutes into the future!"
+                )
+        return data
 
     class Meta:
         model = OrderInfo
