@@ -38,3 +38,9 @@ input[type="submit"] {
     font-size:14px;
     border:0;
 }
+
+ul.errorlist {
+    display: inline;
+    color: red;
+    list-style-type: none;
+}
