@@ -11,7 +11,7 @@ class OrderCreateForm(forms.ModelForm):
         data = self.cleaned_data['pickup_time']
         if timezone.now() + datetime.timedelta(minutes=30) > data:
             raise forms.ValidationError(
-                    "Pickup time must be at least 30 minutes into the future!"
+                "Pickup time must be at least 30 minutes into the future!"
                 )
         return data
 
