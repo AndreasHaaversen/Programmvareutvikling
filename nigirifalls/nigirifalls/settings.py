@@ -86,8 +86,8 @@ if (socket.gethostname()[:6] == 'runner'):
             'NAME': 'nigirifalls_db',
             'USER': 'dev',
             'PASSWORD': 'dev',
-            'HOST': '',
-            'PORT': '3306',
+            'HOST': 'postgres',
+            'PORT': '',
         }
     }
 
