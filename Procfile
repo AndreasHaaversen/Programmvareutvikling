@@ -1,1 +1,1 @@
-web: gunicorn nigirifalls.wsgi
+web: gunicorn nigiri_falls.wsgi --log-file -

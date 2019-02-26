@@ -4,4 +4,4 @@ mysqlclient
 whitenoise
 Django
 Pillow
-Gunicorn
+gunicorn
