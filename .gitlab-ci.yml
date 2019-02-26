@@ -1,8 +1,7 @@
 variables:
-  MYSQL_ROOT_PASSWORD: rootpassword
-  MYSQL_DATABASE: nigirifalls_db
-  MYSQL_USER: dev
-  MYSQL_PASSWORD: dev
+  POSTGRES_DB: nigirifalls_db
+  POSTGRES_USER: custom_user
+  POSTGRES_PASSWORD: custom_pass
 
 stages:
   - test
@@ -12,7 +11,7 @@ Code quality check:
   stage: test
   image: python:latest
   services:
-    - mariadb:latest
+    - postgres
   script: 
     - bash ./gitlab_tests.sh
     

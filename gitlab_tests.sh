@@ -8,9 +8,10 @@ apt-get -y update
 echo "*********************************"
 echo "******** OS dependencies ********"
 echo "*********************************"
+- export PGPASSWORD=$POSTGRES_PASSWORD
+- psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
 # NB: For when I get a GNU/Linux install or Hyper-V, it is wise to combine Python image with mariadb-client baked-in to then
 # Docker image in order to avoid having to install it every time the pipeline runs.
-apt-get install -y mariadb-client
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
@@ -24,7 +25,6 @@ pip freeze
 echo "*************************************"
 echo "******** Database setup step ********"
 echo "*************************************"
-#echo "CREATE USER 'dev'@'mariadb' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'mariadb' WITH GRANT OPTION;" | mysql --user=root --password=rootpassword --host=mariadb nigirifalls_db
 if python3 ./nigirifalls/manage.py makemigrations; then
     printf 'OK - Migrations have been made or were already made\n'
 else
