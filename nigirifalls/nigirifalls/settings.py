@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'nigirifalls.wsgi.application'
 if (socket.gethostname()[:6] == 'runner'):
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'nigirifalls_db',
             'USER': 'dev',
             'PASSWORD': 'dev',
-            'HOST': 'mariadb',
+            'HOST': '',
             'PORT': '3306',
         }
     }
