@@ -4,15 +4,6 @@ variables:
   MYSQL_USER: dev
   MYSQL_PASSWORD: dev
 
-services:
-  - mariadb:latest
-  
-variables:
-  MYSQL_ROOT_PASSWORD: rootpassword
-  MYSQL_DATABASE: nigirifalls_db
-  MYSQL_USER: dev
-  MYSQL_PASSWORD: dev
-
 stages:
   - test
   - deploy
