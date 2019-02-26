@@ -1,5 +1,6 @@
 from django.shortcuts import redirect
+from django.urls import reverse
 
 
 def takeawayredirect(request):
-    return redirect('/takeaway', permanent=True)
+    return redirect(reverse("takeaway:index"))

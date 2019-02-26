@@ -132,3 +132,27 @@ class CheckoutViewTests(TestCase):
 #                                     'pickup_time': time})
 #
 #        self.assertTrue(OrderInfo.objects.count() == order_count + 1)
+
+
+class ThankYouViewTests(TestCase):
+
+    def setUp(self):
+        time = timezone.now() + timezone.timedelta(minutes=31)
+        OrderInfo.objects.create(name_of_customer='Andreas',
+                                 email="andreas@hotmail.no",
+                                 phone_number=46813998,
+                                 pickup_time=time)
+        return super().setUp()
+
+    def test_view_url_exists_at_desired_location(self):
+        response = self.client.get('/takeaway/thankyou/1')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('takeaway:thankyou', args=(1,)))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('takeaway:thankyou', args=(1,)))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'takeaway/thankyou.html')
