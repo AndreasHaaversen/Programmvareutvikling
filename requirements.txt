@@ -5,4 +5,3 @@ whitenoise
 Django
 Pillow
 Gunicorn
-django-heroku
