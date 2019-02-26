@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 # Testing script
 echo "Hostname: " $(cat /etc/hostname)
-echo "*********************************"
-echo "******** Postgres setup *********"
-echo "*********************************"
-export PGPASSWORD=$POSTGRES_PASSWORD
-psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
