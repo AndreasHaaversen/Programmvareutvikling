@@ -108,31 +108,6 @@ class CheckoutViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'takeaway/checkout.html')
 
-#    def test_add_valid_order(self):
-#        self.client.get(reverse("takeaway:index"))
-#
-#        order_count = OrderInfo.objects.count()
-#
-#        number_of_dishes = 5
-#
-#        for i in range(number_of_dishes):
-#            dish = create_dish("Maki"+str(i), "Delicious roll",
-#                               123.45, "rolls")
-#
-#            self.client.post(reverse('cart:cart_add',
-#                             kwargs={'dish_id': dish.id, }),
-#                             {'quantity': 1, 'update': False})
-#
-#        time = timezone.now() + timezone.timedelta(minutes=31)
-#
-#        response = self.client.post(reverse("takeaway:order_create"),
-#                                    {'name_of_customer': 'Andreas',
-#                                     'email': "andreas@hotmail.no",
-#                                     'phone_number': 46813998,
-#                                     'pickup_time': time})
-#
-#        self.assertTrue(OrderInfo.objects.count() == order_count + 1)
-
 
 class ThankYouViewTests(TestCase):
 
