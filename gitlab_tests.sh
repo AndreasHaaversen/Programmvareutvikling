@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
 # Testing script
 echo "Hostname: " $(cat /etc/hostname)
-echo "************************"
-echo "******** Update ********"
-echo "************************"
-apt-get -y update
 echo "*********************************"
-echo "******** OS dependencies ********"
+echo "******** Postgres setup *********"
 echo "*********************************"
 export PGPASSWORD=$POSTGRES_PASSWORD
 psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
-# NB: For when I get a GNU/Linux install or Hyper-V, it is wise to combine Python image with mariadb-client baked-in to then
-# Docker image in order to avoid having to install it every time the pipeline runs.
 echo "**********************************"
 echo "******** Pip dependencies ********"
 echo "**********************************"
-pip install --upgrade pip
+#pip install --upgrade pip
 pip install -r ./nigirifalls/requirements.txt
 echo "***********************************"
 echo "******** Zone install step ********"
