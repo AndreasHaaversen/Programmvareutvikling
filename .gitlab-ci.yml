@@ -13,7 +13,15 @@ stages:
   - test
   - deploy
 
-Code quality: 
+Code quality check: 
   stage: test 
   script: 
     - bash ./gitlab_tests.sh
+    
+Deploy to Heroku:
+  stage: deploy
+  only:
+    refs:
+      - master
+  script:
+    - bash ./gitlab_deploy.sh

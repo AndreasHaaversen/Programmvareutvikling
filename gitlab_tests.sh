@@ -21,9 +21,9 @@ echo "******** Zone install step ********"
 echo "***********************************"
 python -V
 pip freeze
-#echo "*************************************"
-#echo "******** Database setup step ********"
-#echo "*************************************"
+echo "*************************************"
+echo "******** Database setup step ********"
+echo "*************************************"
 #echo "CREATE USER 'dev'@'mariadb' IDENTIFIED BY 'dev';GRANT ALL PRIVILEGES ON *.* TO 'dev'@'mariadb' WITH GRANT OPTION;" | mysql --user=root --password=rootpassword --host=mariadb nigirifalls_db
 if python3 ./nigirifalls/manage.py makemigrations; then
     printf 'OK - Migrations have been made or were already made\n'
