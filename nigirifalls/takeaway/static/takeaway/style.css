@@ -8,7 +8,48 @@ body {
     “Fira Sans”, “Droid Sans”, “Helvetica Neue”, sans-serif;
 }
 
-ul {
+h1, h2, h3, h4, h5 , h6 { 
+    font-family: 'Segoe UI', sans-serif; font-weight:normal;
+}
+
+.text-left {
+    text-align:left;
+}
+
+.text-right {
+    text-align:right;
+}
+
+form p label, form p input {
+    float:left;
+    clear:both;
+}
+
+form p label {
+    font-size:14px;
+    padding-bottom:4px;
+}
+
+form p input {
+    width:300px;
+    font-size:13px;
+    margin-bottom:10px;
+    padding:10px 12px;
+    border:0;
+    background:#efefef;
+    color:#666;
+    border-radius:4px;
+}
+
+.header {
+    grid-area: header;
+}
+
+.subheader {
+    float: right;
+}
+
+.header ul {
     display: inline;
     list-style-type: none;
     margin: 0;
@@ -17,11 +58,11 @@ ul {
     background-color: whitesmoke
 }
 
-li {
+.header li {
     float: right;
 }
 
-li a {
+.header li a {
     display: block;
     color: black;
     text-align: center;
@@ -29,10 +70,10 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+.header li a:hover {
     background-color: lightgray
 }
 
-h1 {
+.header h1 {
     display: inline;
 }

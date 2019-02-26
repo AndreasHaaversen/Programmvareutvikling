@@ -1,0 +1,31 @@
+{% extends 'takeaway/base.html' %}¨
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'takeaway/checkout_style.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+    <h1>Checkout</h1>
+
+    <div class="order_info">
+        <h3>Your order</h3>
+        <ul>
+            {% for item in cart %}
+                <li>
+                    {{ item.quantity }}x {{ item.dish.name }}
+                    <span> {{ item.total_price }} kr.</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Total: {{ cart.get_total_price }} kr.</p>
+    </div>
+
+    <form action="." method="post" class="order_form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Place order" class="button"></p>
+    </form>
+
+{% endblock content %}

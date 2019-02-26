@@ -1,14 +1,16 @@
 {% extends 'takeaway/base.html' %}
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block extra_css %}
-    <link rel="stylesheet", type="text/css" href="{% static 'takeaway/index_style.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'takeaway/index_style.css' %}"> 
 {% endblock %}
 
 {% block content %}
     {% if dish_list %}
         {% regroup dish_list by get_dish_type_display as dish_list_by_type %}
-        <div class="main">
+        <div class="content">
         {% for dish_type in dish_list_by_type %}
             <div class="category">
                 <h1><p>{{ dish_type.grouper }}</p></h1>
@@ -16,10 +18,15 @@
             {% for dish in dish_type.list %}
                 <div class="item">
                     <span>
-                        <img src= {{ dish.image.url }} style="width:150px;height:150px;">
+                        <img src= {{ dish.image.url }} style="width:175px;height:175px;"><br/>
                         {{ dish.name }} <br/>
                         {{ dish.description }} <br/>
-                        Pris: {{ dish.price }} .- kr
+                        Pris: {{ dish.price }} kr.
+                        <form action="{% url "cart:cart_add" dish.id %}" method="post">
+                            {{ add_dish_form }}
+                            {% csrf_token %}
+                            <input type="submit" value="Legg til">
+                        </form>
                     </span>
                 </div>
             {% endfor %}
@@ -28,5 +35,8 @@
     {% else %}
         <p>No dishes are availible.</p>
     {% endif %}
-    
 {% endblock %}
+
+
+
+

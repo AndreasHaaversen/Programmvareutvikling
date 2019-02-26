@@ -7,6 +7,7 @@ def get_image_path(instance, filename):
 
 
 class Dish(models.Model):
+
     DISH_TYPE_CHOICES = (
         ('maki', 'Maki'),
         ('nigiri', 'Nigiri'),
@@ -24,3 +25,45 @@ class Dish(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class OrderInfo(models.Model):
+
+    ORDER_STATUS_CHOICES = (
+        ('motatt', 'Motatt'),
+        ('prod', 'I produksjon'),
+        ('klar', 'Klar for henting'),
+        ('hentet', 'Hentet av kunde'),
+        ('kansellert', 'Ordre ble kansellert'),
+    )
+
+    name_of_customer = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone_number = models.IntegerField()
+    pickup_time = models.DateTimeField()
+    comment = models.CharField(max_length=250, blank=True)
+    status = models.CharField(max_length=10, choices=ORDER_STATUS_CHOICES,
+                              default='motatt')
+
+    def __str__(self):
+        return 'Order {}'.format(self.id)
+
+    def get_order_total(self):
+        return sum(dish.price for dish in self.dishes.all())
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(OrderInfo,
+                              related_name='dishes',
+                              on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish,
+                             related_name='order_items',
+                             on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return '{}'.format(self.id)
+
+    def get_cost(self):
+        return self.price * self.quantity

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Nigiri Falls Takeaway</title>
 
-    <link rel="stylesheet", type="text/css" href="{% static 'takeaway/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'takeaway/style.css' %}">
     {% block extra_css %}
     {% endblock extra_css %}
 </head>
@@ -14,14 +14,29 @@
         <img src={% static 'takeaway/images/logo.png'%} style="width:150px;height:150px;float:left">
         <h1>Nigiri Falls</h1>
         <ul>
-            <li><a href={% url 'takeaway:index' %}>Kontakt</a></li>
+            <li><a href={% url 'takeaway:index' %}>Contact</a></li>
             <li><a href={% url 'takeaway:index' %}>Takeaway</a></li>
-            <li><a href={% url 'takeaway:index' %}>Bordbestilling</a></li> 
-            <li><a href={% url 'takeaway:index' %}>Hjem</a></li>
+            <li><a href={% url 'takeaway:index' %}>Table reservations</a></li> 
+            <li><a href={% url 'takeaway:index' %}>Home</a></li>
         </ul> 
         <hr>
     </div>
 
+    <div class="subheader">
+        <div class="cart">
+          {% with total_items=cart|length %}
+              {% if cart|length > 0 %}
+                Your cart: 
+                <a href="{% url "cart:cart_detail" %}">
+                  {{ total_items }} item{{ total_items|pluralize }},
+                  {{ cart.get_total_price }} kr.
+                </a>
+              {% else %}
+                Your cart is empty.
+              {% endif %}
+            {% endwith %}
+        </div>
+    </div>
     {% block content %}
     {% endblock %}
 
