@@ -9,7 +9,7 @@ def create_dish(slug=""):
     """
     Returns a generic dish for testing purposes
     """
-    return Dish.objects.create(name="Maki"+slug, image="index.jpg",
+    return Dish.objects.create(name="Maki" + slug, image="index.jpg",
                                description="Delicious roll",
                                price=123.00, dish_type="rolls")
 
@@ -92,7 +92,7 @@ class CartTests(TestCase):
                          {'quantity': 2, 'update': False})
 
         cart = Cart(self.client)
-        self.assertTrue(cart.get_total_price() == 3*dish.price)
+        self.assertTrue(cart.get_total_price() == 3 * dish.price)
 
 
 class CartDetailViewTests(TestCase):
@@ -119,7 +119,7 @@ class CartDetailViewTests(TestCase):
             self.client.post(reverse('cart:cart_add',
                              kwargs={'dish_id': dish.id, }),
                              {'quantity': 1, 'update': False})
-        
+
         response = self.client.get(reverse('cart:cart_detail'))
 
         for i in range(1, number_of_dishes):
