@@ -1,7 +1,4 @@
 image: python:latest
-
-services:
-  - mariadb:latest
   
 variables:
   MYSQL_ROOT_PASSWORD: rootpassword
@@ -14,7 +11,9 @@ stages:
   - deploy
 
 Code quality check: 
-  stage: test 
+  stage: test
+  services:
+    - mariadb:latest
   script: 
     - bash ./gitlab_tests.sh
     
