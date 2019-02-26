@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 echo "Deploying..."
+cd nigirifalls
 ls -l
 gem install dpl
 dpl --provider=heroku --app=nigirifallsdev --api-key=$HEROKU_DEPLOY_API_KEY
