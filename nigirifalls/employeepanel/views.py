@@ -17,7 +17,7 @@ class CancelledOrderView(generic.ListView):
     def get_context_data(self):
         context = super().get_context_data()
         context['update_order_status_form'] = UpdateOrderStatusForm()
-        context['viewtype'] = 'Cancelled orders' 
+        context['viewtype'] = 'Cancelled orders'
         return context
 
     def get_queryset(self):
@@ -31,7 +31,7 @@ class ActiveOrderView(generic.ListView):
     def get_context_data(self):
         context = super().get_context_data()
         context['update_order_status_form'] = UpdateOrderStatusForm()
-        context['viewtype'] = 'Active orders' 
+        context['viewtype'] = 'Active orders'
         return context
 
     def get_queryset(self):
