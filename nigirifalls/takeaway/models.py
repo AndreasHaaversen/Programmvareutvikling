@@ -12,7 +12,7 @@ class Dish(models.Model):
         ('maki', 'Maki'),
         ('nigiri', 'Nigiri'),
         ('sashimi', 'Sashimi'),
-        ('meny', 'Meny'),
+        ('menu', 'Menu'),
     )
 
     name = models.CharField(max_length=50)
@@ -30,11 +30,11 @@ class Dish(models.Model):
 class OrderInfo(models.Model):
 
     ORDER_STATUS_CHOICES = (
-        ('motatt', 'Motatt'),
-        ('prod', 'I produksjon'),
-        ('klar', 'Klar for henting'),
-        ('hentet', 'Hentet av kunde'),
-        ('kansellert', 'Ordre ble kansellert'),
+        ('accepted', 'Accepted'),
+        ('prod', 'In production'),
+        ('ready', 'Ready'),
+        ('collected', 'Collected'),
+        ('cancelled', 'Cancelled'),
     )
 
     name_of_customer = models.CharField(max_length=50)
@@ -43,13 +43,13 @@ class OrderInfo(models.Model):
     pickup_time = models.DateTimeField()
     comment = models.CharField(max_length=250, blank=True)
     status = models.CharField(max_length=10, choices=ORDER_STATUS_CHOICES,
-                              default='motatt')
+                              default='accepted')
 
     def __str__(self):
         return 'Order {}'.format(self.id)
 
     def get_order_total(self):
-        return sum(dish.price for dish in self.dishes.all())
+        return sum(dish.price * dish.quantity for dish in self.dishes.all())
 
 
 class OrderItem(models.Model):

@@ -117,7 +117,7 @@ class CartDetailViewTests(TestCase):
         for i in range(1, number_of_dishes):
             dish = create_dish(slug=str(i))
             self.client.post(reverse('cart:cart_add',
-                             kwargs={'dish_id': dish.id, }),
+                                     kwargs={'dish_id': dish.id, }),
                              {'quantity': 1, 'update': False})
 
         response = self.client.get(reverse('cart:cart_detail'))

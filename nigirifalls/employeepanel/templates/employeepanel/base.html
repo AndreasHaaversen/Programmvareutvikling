@@ -1,0 +1,29 @@
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Nigiri Falls Employee</title>
+	<link id="favicon" rel="shortcut icon" href={% static 'takeaway/images/favicon.png'%} sizes="32x32" type="image/png">
+    <link rel="stylesheet" type="text/css" href="{% static 'takeaway/style.css' %}">
+    {% block extra_css %}
+    {% endblock extra_css %}
+</head>
+
+<body>
+    <div class="header">
+        <a href=/takeaway/><img src={% static 'takeaway/images/logo.png'%} style="width:150px;height:150px;float:left"></a>
+        <a href=/takeaway/><h1>Nigiri Falls</h1></a>
+        <ul>
+            <li><a href={% url 'employeepanel:cancelled_orders' %}>Cancelled orders</a></li>
+            <li><a href={% url 'employeepanel:collected_orders' %}>Collected orders</a></li> 
+            <li><a href={% url 'employeepanel:active_orders' %}>Active orders</a></li>
+			<li><a href={% url 'takeaway:index' %}>Home</a></li>
+        </ul> 
+        <hr>
+    </div>
+
+    <div class="subheader">
+    </div>
+    {% block content %}
+    {% endblock content%}
+</body>
