@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Nigiri Falls Takeaway</title>
-
+	<link id="favicon" rel="shortcut icon" href={% static 'takeaway/images/favicon.png'%} sizes="32x32" type="image/png">
     <link rel="stylesheet" type="text/css" href="{% static 'takeaway/style.css' %}">
     {% block extra_css %}
     {% endblock extra_css %}
@@ -11,10 +11,11 @@
 
 <body>
     <div class="header">
-        <img src={% static 'takeaway/images/Logo.png'%} style="width:150px;height:150px;float:left">
-        <h1>Nigiri Falls</h1>
+        <a href=/takeaway/><img src={% static 'takeaway/images/logo.png'%} style="width:150px;height:150px;float:left"></a>
+        <a href=/takeaway/><h1>Nigiri Falls</h1></a>
         <ul>
             <li><a href={% url 'takeaway:index' %}>Contact</a></li>
+			<li><a href={% url 'employeepanel:active_orders' %}>Employee panel</a></li>
             <li><a href={% url 'takeaway:index' %}>Takeaway</a></li>
             <li><a href={% url 'takeaway:index' %}>Table reservations</a></li> 
             <li><a href={% url 'takeaway:index' %}>Home</a></li>

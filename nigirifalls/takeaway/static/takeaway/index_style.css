@@ -5,8 +5,9 @@ div.content {
 }
 
 div.category {
-    background-color: gray;
+    background-color: #669eac;
     opacity: .9;
+	height: 83px;
     width: 90%;
     margin: 20px 40px;
     display: flex;
@@ -14,7 +15,7 @@ div.category {
     justify-content: center;
     padding: 10px;
     font-size: 1.2em;
-    color: #e8e8e8;
+    color: white;
     box-shadow: 1px 1px 1px #595959;
 }
 

@@ -20,8 +20,9 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.takeawayredirect, name='index'),
     path('takeaway/', include('takeaway.urls')),
     path('cart/', include('cart.urls')),
-    path('', views.takeawayredirect, name='index'),
+    path('admin/', admin.site.urls),
+    path('employeepanel/', include('employeepanel.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

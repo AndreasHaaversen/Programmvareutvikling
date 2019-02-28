@@ -6,17 +6,17 @@
 {% endblock extra_css %}
 
 {% block content %}
-    <h1>Din handlevogn</h1>
+    <h1>Your shopping cart</h1>
 
     <table class="cart">
         <thead>
             <tr>
-                <th>Bilde</th>
-                <th>Rett</th>
-                <th>Antall</th>
-                <th>Fjern</th>
-                <th>Stykkpris</th>
-                <th>Totalpris</th>
+                <th>Illustration</th>
+                <th>Dish</th>
+                <th>Amount</th>
+                <th>Remove</th>
+                <th>Price</th>
+                <th>Total</th>
             </tr>
         </thead>
     <tbody>
@@ -35,15 +35,15 @@
                             <input type="submit" value="Update">
                         </form>
                     </td>
-                    <td><a href="{% url "cart:cart_remove" dish.id %}">Fjern</a></td>
+                    <td><a href="{% url "cart:cart_remove" dish.id %}" class="button">Remove</a></td>
                     <td class="num">{{ item.price }} kr.</td>
                     <td class="num">{{ item.total_price }} kr.</td>
                 </tr>
             {% endwith %}
         {% endfor %}
         <tr class="total">
+		    <td colspan="4"></td>
             <td>Total</td>
-            <td colspan="4"></td>
             <td class="num">{{ cart.get_total_price }} kr.</td>
         </tr>
     </tbody>

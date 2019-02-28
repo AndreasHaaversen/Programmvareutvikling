@@ -1,6 +1,6 @@
 body {
     background-color: whitesmoke;
-    margin: 5px;
+    margin: 0px;
     padding: 0px;
 
     font-family: -apple-system, BlinkMacSystemFont,
@@ -8,8 +8,13 @@ body {
     “Fira Sans”, “Droid Sans”, “Helvetica Neue”, sans-serif;
 }
 
+
 h1, h2, h3, h4, h5 , h6 { 
     font-family: 'Segoe UI', sans-serif; font-weight:normal;
+}
+
+.header hr {
+	visibility: hidden;
 }
 
 .text-left {
@@ -26,13 +31,13 @@ form p label, form p input {
 }
 
 form p label {
-    font-size:14px;
+    font-size:16px;
     padding-bottom:4px;
 }
 
 form p input {
     width:300px;
-    font-size:13px;
+    font-size:16px;
     margin-bottom:10px;
     padding:10px 12px;
     border:0;
@@ -43,10 +48,15 @@ form p input {
 
 .header {
     grid-area: header;
+	color: #437784;
+	background-color: #669eac;
 }
 
 .subheader {
     float: right;
+}
+.subheader a {
+	color: #669eac !important;
 }
 
 .header ul {
@@ -64,10 +74,12 @@ form p input {
 
 .header li a {
     display: block;
-    color: black;
+    color: white;
+	background-color: #669eac;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+	font-weight: 600;
 }
 
 .header li a:hover {
@@ -76,4 +88,9 @@ form p input {
 
 .header h1 {
     display: inline;
+}
+
+.header a:link, a:visited{
+	text-decoration: none;
+	color: white;
 }
