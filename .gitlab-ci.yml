@@ -5,7 +5,6 @@ variables:
 
 stages:
   - test
-  - deploy
 
 Code quality check: 
   stage: test
