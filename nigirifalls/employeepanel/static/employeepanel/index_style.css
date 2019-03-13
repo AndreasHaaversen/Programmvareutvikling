@@ -6,7 +6,7 @@
 			margin-bottom: 10px;
 		}
 		table {
-			margin-left: 150px;
+			margin-left: 10%;
 			border-collapse: collapse;
 		}
 		th {
@@ -14,12 +14,11 @@
 			color: white;
 		}
 		table {
-			width: 90%;
+			width: 80%;
 		}
 		table th, td {
 			border: 3px solid #5c9aa7;
 			font-size: 16px;
-			width: 5%;
 			table-layout: fixed;
 		}
 		table hr {
