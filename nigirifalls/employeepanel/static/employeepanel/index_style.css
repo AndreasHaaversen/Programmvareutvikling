@@ -10,15 +10,26 @@
 			border-collapse: collapse;
 		}
 		th {
-			font-size: 28px !important;
+			font-size: 23px !important;
 			color: white;
+			font-weight: normal;
+		}
+		form p label {
+			text-align: right;
+			font-size: 20px !important;
+		}
+		input {
+			font-size: 20px;
+		}
+		select {
+			font-size: 20px;
 		}
 		table {
 			width: 80%;
 		}
 		table th, td {
 			border: 3px solid #5c9aa7;
-			font-size: 16px;
+			font-size: 20px;
 			table-layout: fixed;
 		}
 		table hr {
