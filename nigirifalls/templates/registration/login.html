@@ -1,0 +1,18 @@
+{% extends 'takeaway/base.html' %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/login_style.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% include 'takeaway/form_util.html' with form=form %}
+        <p><input type="submit" value="Login" class="button"></p>
+    </form>
+    <div class="forgotten_link">
+        <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+    </div>
+{% endblock content %}

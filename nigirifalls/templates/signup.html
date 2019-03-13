@@ -1,10 +1,15 @@
 {% extends 'takeaway/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/signup_style.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
     <h1>Sign up</h1>
-    <form method='post'>
+    <form method='post' class='signup_form'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type='sumbmit'>Sign up</button>
+        {% include 'takeaway/form_util.html' with form=form %}
+        <p><input type="submit" value="Sign up" class="button"></p>
     </form>
 {% endblock content %}

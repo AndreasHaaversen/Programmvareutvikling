@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>Nigiri Falls Takeaway</title>
-	<link id="favicon" rel="shortcut icon" href={% static 'takeaway/images/favicon.png'%} sizes="32x32" type="image/png">
+	  <link id="favicon" rel="shortcut icon" href={% static 'takeaway/images/favicon.png'%} sizes="32x32" type="image/png">
     <link rel="stylesheet" type="text/css" href="{% static 'takeaway/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% block extra_css %}
     {% endblock extra_css %}
 </head>
@@ -15,7 +16,7 @@
         <a href=/takeaway/><h1>Nigiri Falls</h1></a>
         <ul>
             <li><a href={% url 'takeaway:index' %}>Contact</a></li>
-			<li><a href={% url 'employeepanel:active_orders' %}>Employee panel</a></li>
+		      	<li><a href={% url 'employeepanel:active_orders' %}>Employee panel</a></li>
             <li><a href={% url 'takeaway:index' %}>Takeaway</a></li>
             <li><a href={% url 'takeaway:index' %}>Table reservations</a></li> 
             <li><a href={% url 'takeaway:index' %}>Home</a></li>
@@ -38,7 +39,24 @@
             {% endwith %}
         </div>
     </div>
-    {% block content %}
-    {% endblock %}
+
+
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+
+    <div class="footer">
+    <hr>
+      {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+      {% else %}
+        <p>You are not logged in</p>
+        <p><a href="{% url 'login' %}">Login</a></p>
+        <p><a href="{% url 'signup' %}">Sign up</a></p>
+      {% endif %}
+    </div>
 
 </body>

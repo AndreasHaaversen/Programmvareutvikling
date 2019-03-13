@@ -1,0 +1,16 @@
+input[type="submit"] {
+    color:#fff;
+    background: #669eac;
+    border-radius:4px;
+    padding:10px 20px;
+    font-size:14px;
+    border:0;
+}
+
+form {
+    width: 300px;
+}
+
+.forgotten_link a {
+    color: grey !important;
+}

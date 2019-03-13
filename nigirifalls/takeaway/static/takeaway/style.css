@@ -10,7 +10,9 @@ body {
 
 
 h1, h2, h3, h4, h5 , h6 { 
-    font-family: 'Segoe UI', sans-serif; font-weight:normal;
+    font-family: 'Segoe UI', sans-serif !important; 
+    font-weight: normal !important;
+    font-size: xx-large !important;
 }
 
 .header hr {
@@ -90,7 +92,19 @@ form p input {
     display: inline;
 }
 
-.header a:link, a:visited{
+.header a:link, a:visited, a:hover{
 	text-decoration: none;
-	color: white;
+	color: white !important;
+}
+
+.content {
+    overflow: auto;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer a {
+    color: grey !important;
 }

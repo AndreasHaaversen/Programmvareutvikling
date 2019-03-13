@@ -24,7 +24,7 @@
 
     <form action="." method="post" class="order_form">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% include 'takeaway/form_util.html' with form=form %}
         <p><input type="submit" value="Place order" class="button"></p>
     </form>
 
