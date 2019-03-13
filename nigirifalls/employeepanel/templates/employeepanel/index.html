@@ -7,6 +7,11 @@
 
 {% block content %}
 	<h1>{{ viewtype }}</h1>
+	{% if messages %}
+		{% for message in messages %}
+			<div class="error"> <p> {{ message }} </p> </div>
+		{% endfor %}
+	{% endif %}
 	{% if order_list %}
 		<br>
 		<br>
@@ -26,7 +31,7 @@
 		{% for order in order_list %}
 			<tr>
 				<td>{{ order.pickup_time }}</td>
-				<td>{{ order.id }} </td>
+				<td><a class "button" href="/admin/takeaway/orderinfo/{{ order.id }}/change/">{{ order.id }}</a></td>
 				<td>{{ order.name_of_customer }}</td>
 				<td>{{ order.phone_number }}</td>
 				<td>

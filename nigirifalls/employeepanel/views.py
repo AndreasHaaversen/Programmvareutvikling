@@ -4,6 +4,9 @@ from django.shortcuts import get_object_or_404, render, reverse, redirect
 from django.urls import reverse
 from django.views.decorators.http import require_POST
 from .forms import UpdateOrderStatusForm
+from django.utils import timezone
+import datetime
+from django.contrib import messages
 
 
 def employeeredirect(request):
@@ -60,6 +63,13 @@ def update_order_status(request, pk):
     form = UpdateOrderStatusForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
-        order.status = cd['status']
+        if cd['status'] == 'cancelled':
+            if timezone.now() + datetime.timedelta(minutes=30) < order.pickup_time:
+                order.status = cd['status']
+            else:
+                messages.add_message(
+                    request, messages.ERROR, "Can't cancel order if there is less than 30 minutes to pickup time")
+        else:
+            order.status = cd['status']
         order.save(update_fields=['status'])
     return redirect(reverse('employeepanel:active_orders'))

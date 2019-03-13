@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['nigirifallsdev.herokuapp.com', '127.0.0.1']
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
 
 # Application definition
 
