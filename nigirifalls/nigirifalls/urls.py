@@ -24,5 +24,7 @@ urlpatterns = [
     path('takeaway/', include('takeaway.urls')),
     path('cart/', include('cart.urls')),
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls')),
     path('employeepanel/', include('employeepanel.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
