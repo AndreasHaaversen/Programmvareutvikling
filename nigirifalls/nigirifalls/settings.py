@@ -156,10 +156,10 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'sarturn98@gmail.com'
-EMAIL_HOST_PASSWORD = 'Asperaadastra!'
+EMAIL_HOST_USER = 'nigirifalls@gmail.com'
+EMAIL_HOST_PASSWORD = 'PotatoTomato'
 EMAIL_USE_TLS = True
