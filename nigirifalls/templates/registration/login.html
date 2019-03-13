@@ -9,7 +9,7 @@
     <h1>Login</h1>
     <form method="post">
         {% csrf_token %}
-        {% include 'takeaway/form_util.html' with form=form %}
+        {% include 'takeaway/login_form_util.html' with form=form %}
         <p><input type="submit" value="Login" class="button"></p>
     </form>
     <div class="forgotten_link">
