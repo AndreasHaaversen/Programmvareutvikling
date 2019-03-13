@@ -4,10 +4,9 @@ from takeaway.models import OrderInfo
 from django.utils import timezone
 from users.models import CustomUser as User
 
-# Create your tests here.
 
 class NotLoggedInViewTests(TestCase):
-    
+
     def test_active_orders(self):
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertEqual(response.status_code, 200)
