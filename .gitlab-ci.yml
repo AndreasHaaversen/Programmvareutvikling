@@ -14,3 +14,12 @@ Code quality check:
     - postgres
   script: 
     - bash ./gitlab_tests.sh
+
+Deploy to Heroku:
+  stage: deploy
+  image: ruby:latest
+  only:
+    refs:
+      - master
+  script:
+    - bash ./gitlab_deploy.sh
