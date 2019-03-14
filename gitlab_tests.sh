@@ -34,6 +34,7 @@ if python3 ./nigirifalls/manage.py collectstatic; then
 else
     printf 'Failed - Could not collect static files\n'
 	exit 1
+fi
 echo "*****************************"
 echo "******** Django test ********"
 echo "*****************************"
