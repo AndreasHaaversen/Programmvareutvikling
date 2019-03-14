@@ -6,6 +6,9 @@ from cart.forms import CartAddDishForm
 from cart.cart import Cart
 
 
+
+
+
 class IndexView(generic.ListView):
     template_name = 'takeaway/index.html'
 
@@ -42,3 +45,17 @@ def order_create(request):
         form = OrderCreateForm()
     return render(request, 'takeaway/checkout.html',
                   {'cart': cart, 'form': form})
+
+    def index_search_view(request):
+        obj = Dish.objects.get(id=1)
+
+
+        return render(request, "takeaway/indexsearch.html", {})
+
+
+
+
+
+
+
+

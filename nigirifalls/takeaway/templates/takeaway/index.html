@@ -6,6 +6,14 @@
 {% endblock %}
 
 {% block content %}
+
+    <div class="search-container">
+    <form action="/action_page.php">
+            <input type="text" placeholder="Search for dishes.." name="q">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
     {% if dish_list %}
         {% regroup dish_list by get_dish_type_display as dish_list_by_type %}
         <div class="content">
