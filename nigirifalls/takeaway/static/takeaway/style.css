@@ -10,6 +10,7 @@ body {
 
 
 h1, h2, h3, h4, h5 , h6 { 
+    margin-top: none !important;
     font-family: 'Segoe UI', sans-serif !important; 
     font-weight: normal !important;
     font-size: xx-large !important;

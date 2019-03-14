@@ -11,7 +11,7 @@
         <div class="content">
         {% for dish_type in dish_list_by_type %}
             <div class="category">
-                <h1><p>{{ dish_type.grouper }}</p></h1>
+                <h1>{{ dish_type.grouper }}</h1>
             </div>
             {% for dish in dish_type.list %}
                 <div class="item">
