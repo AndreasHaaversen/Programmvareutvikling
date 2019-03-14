@@ -24,6 +24,10 @@
 
     <div class="subheader">
     </div>
-    {% block content %}
-    {% endblock content%}
+    {% if user.is_staff %}
+        {% block content %}
+        {% endblock content%}
+    {% else %}
+        <p>You must be logged in as staff to see this page.</p>
+    {% endif %}
 </body>

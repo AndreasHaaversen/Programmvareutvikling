@@ -2,11 +2,36 @@ from django.test import TestCase
 from django.urls import reverse
 from takeaway.models import OrderInfo
 from django.utils import timezone
+from users.models import CustomUser as User
 
-# Create your tests here.
+
+class NotLoggedInViewTests(TestCase):
+
+    def test_active_orders(self):
+        response = self.client.get(reverse('employeepanel:active_orders'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'You must be logged in as staff to see this page.')
+
+    def test_cancelled_orders(self):
+        response = self.client.get(reverse('employeepanel:cancelled_orders'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'You must be logged in as staff to see this page.')
+
+    def test_collected_orders(self):
+        response = self.client.get(reverse('employeepanel:collected_orders'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'You must be logged in as staff to see this page.')
 
 
 class ActiveOrdersViewTests(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser',
+                                             password='12345')
+        self.user.is_staff = True
+        self.user.save()
+        login = self.client.login(username='testuser', password='12345')
+        return super().setUp()
 
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get('/employeepanel/active_orders/')
@@ -66,6 +91,14 @@ class ActiveOrdersViewTests(TestCase):
 
 class CancelledOrdersViewTests(TestCase):
 
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser',
+                                             password='12345')
+        self.user.is_staff = True
+        self.user.save()
+        login = self.client.login(username='testuser', password='12345')
+        return super().setUp()
+
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get('/employeepanel/cancelled_orders/')
         self.assertEqual(response.status_code, 200)
@@ -124,6 +157,14 @@ class CancelledOrdersViewTests(TestCase):
 
 class CollectedOrdersViewTests(TestCase):
 
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser',
+                                             password='12345')
+        self.user.is_staff = True
+        self.user.save()
+        login = self.client.login(username='testuser', password='12345')
+        return super().setUp()
+
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get('/employeepanel/collected_orders/')
         self.assertEqual(response.status_code, 200)
@@ -180,6 +221,15 @@ class CollectedOrdersViewTests(TestCase):
 
 
 class RedirectViewTests(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser',
+                                             password='12345')
+        self.user.is_staff = True
+        self.user.save()
+        login = self.client.login(username='testuser', password='12345')
+        return super().setUp()
+
     def test_redirect(self):
         response = self.client.get('/employeepanel/')
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
