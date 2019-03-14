@@ -26,6 +26,14 @@ else
     printf 'Failed - Database migrations failed\n'
 	exit 1
 fi
+echo "*************************************"
+echo "******** Collect static step ********"
+echo "*************************************"
+if python3 ./nigirifalls/manage.py collectstatic; then
+    printf 'OK - Static files collected\n'
+else
+    printf 'Failed - Could not collect static files\n'
+	exit 1
 echo "*****************************"
 echo "******** Django test ********"
 echo "*****************************"
