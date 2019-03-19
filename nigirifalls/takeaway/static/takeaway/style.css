@@ -49,17 +49,16 @@ form p input {
     border-radius:4px;
 }
 
-.header {
-    grid-area: header;
-	color: #437784;
-	background-color: #669eac;
-}
-
 .subheader {
     float: right;
 }
 .subheader a {
 	color: #669eac !important;
+}
+
+.header {
+	color: #437784;
+	background-color: #669eac;
 }
 
 .header ul {
@@ -91,11 +90,11 @@ form p input {
 
 .header h1 {
     display: inline;
+    color: white;
 }
 
-.header a:link, a:visited, a:hover{
+.header a:link, a:visited, a:hover {
 	text-decoration: none;
-	color: white !important;
 }
 
 .content {
