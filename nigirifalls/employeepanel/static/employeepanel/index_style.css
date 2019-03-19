@@ -1,51 +1,58 @@
-		button {
-			height: 70px;
-		}
-		p {
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-		table {
-			margin-left: 150px;
-			border-collapse: collapse;
-		}
-		th {
-			font-size: 28px !important;
-			color: white;
-		}
-		table, th, td {
-			border: 3px solid #5c9aa7;
-			font-size: 16px;
-			width: 200px;
-			table-layout: fixed;
-		}
-		table hr {
-			color: #5c9aa7;
-			margin: 0px;
-		}
-		th {
-			background-color: #669eac;
-		}
-		th:nth-of-type(2) {
-			width: 30px;
-		}
-		th:nth-of-type(6) {
-			width: 30px;
-		}
-		th:nth-of-type(4) {
-			width: 150px;
-		}
-		th:nth-of-type(7) {
-			width: 130px;
-		}
-		th:nth-of-type(8) {
-			width: 300px;
-		}
-		th:nth-of-type(9) {
-			width: 180px;
-		}
-		td {
-			padding: 7px;
-			overflow: hidden;
-			text-align: center;
-		}
+button {
+	height: 70px;
+}
+p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+table {
+	margin-left: 150px;
+	border-collapse: collapse;
+	width: 80%;
+}
+th {
+	font-size: 20px !important;
+	color: white;
+}
+table, th, td {
+	border: 3px solid #5c9aa7;
+	font-size: 16px;
+	table-layout: auto;
+}
+table hr {
+	color: #5c9aa7;
+	margin: 0px;
+}
+th {
+	background-color: #669eac;
+}
+th:nth-of-type(2) {
+	width: 2%;
+}
+
+th:nth-of-type(4) {
+	width: 10%;
+}
+
+th:nth-of-type(5) {
+	width: 20%;
+}
+
+th:nth-of-type(6) {
+	width: 1%;
+}
+
+th:nth-of-type(7) {
+	width: 10%;
+}
+th:nth-of-type(8) {
+	width: 40%;
+}
+th:nth-of-type(9) {
+	width: 10%;
+}
+td {
+	padding: 7px;
+	overflow: hidden;
+	text-align: center;
+}
