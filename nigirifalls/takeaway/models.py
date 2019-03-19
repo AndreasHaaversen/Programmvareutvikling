@@ -14,24 +14,22 @@ class Dish(models.Model):
         ('sashimi', 'Sashimi'),
         ('menu', 'Menu'),
     )
-
-    ALLERGENS_CHOICES = (
-        ('gluten', 'G'),
-        ('shellfish', 'Sh'),
-        ('egg', 'E'),
-        ('fish', 'F'),
-        ('peanuts', 'P'),
-        ('soy', 'So'),
-        ('milk', 'Mi'),
-        ('nuts', 'N'),
-        ('celery', 'C'),
-        ('mustard', 'Mu'),
-        ('sesame', 'Se'),
-        ('sulphites', 'Su'),
-        ('lupin', 'L'),
-        ('molluscs', 'Mo'),
-
-    )
+#   ALLERGENS_CHOICES = (
+#        ('gluten', 'G'),
+ #       ('shellfish', 'Sh'),
+  #      ('egg', 'E'),
+   #     ('fish', 'F'),
+    #    ('peanuts', 'P'),
+     #   ('soy', 'So'),
+      #  ('milk', 'Mi'),
+       # ('nuts', 'N'),
+        #('celery', 'C'),
+#        ('mustard', 'Mu'),
+ #       ('sesame', 'Se'),
+  #      ('sulphites', 'Su'),
+   #     ('lupin', 'L'),
+    #    ('molluscs', 'Mo'),
+     #   )
 
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
@@ -40,7 +38,8 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     dish_type = models.CharField(max_length=7, choices=DISH_TYPE_CHOICES,
                                  default='maki')
-    allergy_info = models.CharField(max_length=50, choices=ALLERGENS_CHOICES, default = 'fish')
+#    allergy_info = models.ManyToManyField(max_length=50, choices=ALLERGENS_CHOICES)
+    allergy_info = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
