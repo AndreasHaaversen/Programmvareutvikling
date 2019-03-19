@@ -26,12 +26,17 @@ table hr {
 th {
 	background-color: #669eac;
 }
+
+th:nth-of-type(1) {
+	width: 10%;
+}
+
 th:nth-of-type(2) {
 	width: 2%;
 }
 
 th:nth-of-type(4) {
-	width: 10%;
+	width: 7%;
 }
 
 th:nth-of-type(5) {
