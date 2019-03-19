@@ -10,13 +10,19 @@ def employeeredirect(request):
     return redirect(reverse("employeepanel:active_orders"))
 
 
-class CancelledOrderView(generic.ListView):
+class GenericOrderView(generic.ListView):
     template_name = 'employeepanel/index.html'
     context_object_name = 'order_list'
 
     def get_context_data(self):
         context = super().get_context_data()
         context['update_order_status_form'] = UpdateOrderStatusForm()
+        return context
+
+
+class CancelledOrderView(GenericOrderView):
+    def get_context_data(self):
+        context = super().get_context_data()
         context['viewtype'] = 'Cancelled orders'
         return context
 
@@ -24,13 +30,9 @@ class CancelledOrderView(generic.ListView):
         return OrderInfo.objects.filter(status="cancelled")
 
 
-class ActiveOrderView(generic.ListView):
-    template_name = 'employeepanel/index.html'
-    context_object_name = 'order_list'
-
+class ActiveOrderView(GenericOrderView):
     def get_context_data(self):
         context = super().get_context_data()
-        context['update_order_status_form'] = UpdateOrderStatusForm()
         context['viewtype'] = 'Active orders'
         return context
 
@@ -40,13 +42,9 @@ class ActiveOrderView(generic.ListView):
             status="collected").order_by('pickup_time')
 
 
-class CollectedOrderView(generic.ListView):
-    template_name = 'employeepanel/index.html'
-    context_object_name = 'order_list'
-
+class CollectedOrderView(GenericOrderView):
     def get_context_data(self):
         context = super().get_context_data()
-        context['update_order_status_form'] = UpdateOrderStatusForm()
         context['viewtype'] = 'Collected orders'
         return context
 
