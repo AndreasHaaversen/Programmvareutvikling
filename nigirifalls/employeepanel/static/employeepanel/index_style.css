@@ -46,24 +46,6 @@
 		th {
 			background-color: #669eac;
 		}
-		th:nth-of-type(2) {
-			width: 
-		}
-		th:nth-of-type(6) {
-			width:
-		}
-		th:nth-of-type(4) {
-			width:
-		}
-		th:nth-of-type(7) {
-			width:
-		}
-		th:nth-of-type(8) {
-			width:
-		}
-		th:nth-of-type(9) {
-			width:
-		}
 		td {
 			padding: 7px;
 			overflow: hidden;
