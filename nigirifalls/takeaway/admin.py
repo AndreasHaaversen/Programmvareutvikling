@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Dish, OrderInfo, OrderItem
+from .models import Dish, OrderInfo, OrderItem, Allergen
 
 admin.site.register(Dish)
+admin.site.register(Allergen)
 
 
 class OrderItemInline(admin.TabularInline):
