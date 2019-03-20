@@ -55,9 +55,8 @@ class DishIndexViewTests(TestCase):
         If there are allergens in the dish, show it to the user.
         """
         allergen = Allergen.objects.create(name='fish')
-        dish = Dish.objects.create(name='Laksemaki', image='index.jpg',
-                            description='Klassisk maki',
-                            price='123', dish_type='maki')
+        dish = Dish.objects.create(name='Laksemaki', image='index.jpg', description='Klassisk maki', price='123',
+                                   dish_type='maki')
         dish.allergy_info.add(allergen)
         response = self.client.get(reverse('takeaway:index'))
         self.assertContains(response, 'F')
