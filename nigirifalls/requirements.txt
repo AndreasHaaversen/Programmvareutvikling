@@ -8,3 +8,4 @@ psycopg2-binary
 dj-database-url
 django-widget-tweaks
 django-bootstrap4
+weasyprint
