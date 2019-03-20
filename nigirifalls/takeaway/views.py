@@ -46,11 +46,14 @@ def order_create(request):
     return render(request, 'takeaway/checkout.html',
                   {'cart': cart, 'form': form})
 
-    def index_search_view(request):
-        obj = Dish.objects.get(id=1)
-
-
-        return render(request, "takeaway/indexsearch.html", {})
+    def index_search_view(request):       
+        if request.method == 'GET': # this will be GET now      
+            dish_name =  request.GET.get('search') # do some research what it does       
+            try:
+                status = Add_prod.objects.filter(dishname__icontains=dish_name) # filter returns a list so you might consider skip except part
+            return render(request, 'search.html', {'dishes' :status})
+        else:
+            return render(request, 'search.html',{})
 
 
 

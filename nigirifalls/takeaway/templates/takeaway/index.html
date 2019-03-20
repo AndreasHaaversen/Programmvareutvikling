@@ -43,6 +43,14 @@
     {% endif %}
 {% endblock %}
 
-
+{% if dish %}
+{% for dish in dish_list %}
+    <a href="{% url 'buy_dish' pk=dish.pk %}">
+    <!--Upon successful search book image with hyperlink appears -->
+    <img src="{{ dish.image.url }}" alt="No Image"></a>
+    <p>{{ dish.name }}</p>
+    <p>Rs.{{ dish.price }}</p>   
+{% endfor %}
+{% endif %}
 
 
