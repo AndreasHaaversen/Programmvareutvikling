@@ -4,7 +4,7 @@ from django.core.validators import ValidationError
 from django.utils import timezone
 
 from nigirifalls.settings import CART_SESSION_ID
-from .models import Dish, OrderInfo
+from .models import Dish, OrderInfo, Allergen
 from .forms import OrderCreateForm
 
 
@@ -49,6 +49,18 @@ class DishIndexViewTests(TestCase):
         response = self.client.get(reverse('takeaway:index'))
         self.assertQuerysetEqual(response.context['dish_list'],
                                  ['<Dish: Maki>'])
+
+    def test_has_allergens(self):
+        """
+        If there are allergens in the dish, show it to the user.
+        """
+        allergen = Allergen.objects.create(name='fish')
+        dish = Dish.objects.create(name='Laksemaki', image='index.jpg',
+                            description='Klassisk maki',
+                            price='123', dish_type='maki')
+        dish.allergy_info.add(allergen)
+        response = self.client.get(reverse('takeaway:index'))
+        self.assertContains(response, 'F')
 
 
 class OrderInfoFormTests(TestCase):

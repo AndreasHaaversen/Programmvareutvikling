@@ -6,6 +6,30 @@ def get_image_path(instance, filename):
     return os.path.join('dish_img', str(instance.id), filename)
 
 
+class Allergen(models.Model):
+    ALLERGEN_CHOICES = (
+        ('none', ' '),
+        ('gluten', 'G'),
+        ('shellfish', 'Sh'),
+        ('egg', 'E'),
+        ('fish', 'F'),
+        ('peanuts', 'P'),
+        ('soy', 'So'),
+        ('milk', 'Mi'),
+        ('nuts', 'N'),
+        ('celery', 'C'),
+        ('mustard', 'Mu'),
+        ('sesame', 'Se'),
+        ('sulphites', 'Su'),
+        ('lupin', 'L'),
+        ('molluscs', 'Mo'),
+       )
+    name = models.CharField(max_length=20, choices=ALLERGEN_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+
 class Dish(models.Model):
 
     DISH_TYPE_CHOICES = (
@@ -22,6 +46,7 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     dish_type = models.CharField(max_length=7, choices=DISH_TYPE_CHOICES,
                                  default='maki')
+    allergy_info = models.ManyToManyField(Allergen, default='none')
 
     def __str__(self):
         return self.name

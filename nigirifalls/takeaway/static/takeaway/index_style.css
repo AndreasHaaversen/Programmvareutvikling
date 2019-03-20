@@ -46,3 +46,10 @@ div.main {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
 }
+.allergen {
+    text-align: center;
+    font-size: 0.75em;
+    margin-left: 150px;
+    margin-right: 150px;
+
+    }

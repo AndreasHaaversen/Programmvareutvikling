@@ -19,7 +19,15 @@
                         <img src= {{ dish.image.url }} style="width:175px;height:175px;"><br/>
                         {{ dish.name }} <br/>
                         {{ dish.description }} <br/>
-                        Price: {{ dish.price }} kr.
+                        Price: {{ dish.price }} kr. <br/>
+                        {% for allergen in dish.allergy_info.all %}
+                            {% if not forloop.last %}
+                                {{ allergen.get_name_display }},
+                            {% else %}
+                                {{ allergen.get_name_display }}
+                            {% endif %}
+                        {% endfor %}
+                        <br/>
                         <form action="{% url "cart:cart_add" dish.id %}" method="post">
                             {{ add_dish_form }}
                             {% csrf_token %}
@@ -30,6 +38,10 @@
             {% endfor %}
         {% endfor %}
         </div>
+    <div class="allergen">
+        <p> Please inform us if you have any allergies. We will be happy to customize your order.
+            <br> Allergens: G-gluten, Sh-shellfish, E-eggs, F-fish, P-peanuts, So-soy, Mi-milk, N-nuts, C-celery, Mu-mustard, Se-sesame, Su-sulphites, L-lupin, Mo-molluscs.</p>
+    </div>
     {% else %}
         <p>No dishes are availible.</p>
     {% endif %}
