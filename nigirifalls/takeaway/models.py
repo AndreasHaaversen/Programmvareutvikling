@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 import os
 
 
@@ -50,7 +51,9 @@ class OrderInfo(models.Model):
 
     def get_order_total(self):
         return sum(dish.price * dish.quantity for dish in self.dishes.all())
-
+		
+    def get_absolute_url(self):
+        return reverse("employeepanel:active_orders")
 
 class OrderItem(models.Model):
     order = models.ForeignKey(OrderInfo,
@@ -67,3 +70,6 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+
+    def get_absolute_url(self):
+        return reverse("employeepanel:active_orders")

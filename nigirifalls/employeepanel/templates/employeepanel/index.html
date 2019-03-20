@@ -31,16 +31,16 @@
 		{% for order in order_list %}
 			<tr>
 				<td>{{ order.pickup_time }}</td>
-				<td><a class "button" href="/admin/takeaway/orderinfo/{{ order.id }}/change/">{{ order.id }}</a></td>
+				<td><a class "button" href="/employeepanel/order/{{ order.id }}/edit/">{{ order.id }}</a></td>
 				<td>{{ order.name_of_customer }}</td>
 				<td>{{ order.phone_number }}</td>
 				<td>
 				{% for dishes in order.dishes.all %}
 					{% if not forloop.last %}
-					<p>{{ dishes.dish.name }}</p>
+					<p><a class "button" href="/employeepanel/order/{{ dishes.id }}/edititem/">{{ dishes.dish.name }}</a></p>
 					<hr>
 					{% else %}
-					<p>{{ dishes.dish.name }}</p>
+					<p><a class "button" href="/employeepanel/order/{{ dishes.id }}/edititem/">{{ dishes.dish.name }}</a></p>
 					{% endif %}
 				{% endfor %}
 				</td>

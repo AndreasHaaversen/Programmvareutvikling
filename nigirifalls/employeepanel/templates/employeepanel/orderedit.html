@@ -1,0 +1,18 @@
+{% extends 'employeepanel/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'takeaway/checkout_style.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+    <h1>{{ viewtype }}</h1>
+
+    <form action="." method="post" class="order_form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Save" class="button"></p>
+    </form>
+
+{% endblock content %}

@@ -1,7 +1,8 @@
 from django.views import generic
-from takeaway.models import OrderInfo
+from takeaway.models import OrderInfo, OrderItem
 from django.shortcuts import get_object_or_404, render, reverse, redirect
 from django.urls import reverse
+from django.views.generic.edit import UpdateView
 from django.views.decorators.http import require_POST
 from .forms import UpdateOrderStatusForm
 from django.utils import timezone
@@ -26,6 +27,15 @@ class CancelledOrderView(generic.ListView):
     def get_queryset(self):
         return OrderInfo.objects.filter(status="cancelled")
 
+class EditOrderView(UpdateView):
+    model = OrderInfo
+    template_name = 'employeepanel/orderedit.html'
+    fields = ['name_of_customer','email','phone_number','pickup_time','comment']
+	
+class EditOrderItemView(UpdateView):
+    model = OrderItem
+    template_name = 'employeepanel/orderedit.html'
+    fields = ['quantity']
 
 class ActiveOrderView(generic.ListView):
     template_name = 'employeepanel/index.html'
