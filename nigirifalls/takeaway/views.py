@@ -1,15 +1,12 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.views import generic
 from django.conf import settings
-from io import BytesIO
-from django.core.mail import EmailMessage
 from django.http import HttpResponse
-from django.template.loader import render_to_string
 from .models import Dish, OrderInfo, OrderItem
 from .forms import OrderCreateForm
+from .mail import send_order_email_with_pdf
 from cart.forms import CartAddDishForm
 from cart.cart import Cart
-import weasyprint
 
 
 class IndexView(generic.ListView):
@@ -43,46 +40,11 @@ def order_create(request):
                                          quantity=item['quantity'])
             cart.clear()
 
-            # Create order confirmation email
-            subject = 'Nigiri Falls - Order no. {}'.format(order.id)
-            message = 'Please find attached the order confirmation for your recent order.'
-            email = EmailMessage(subject,
-                                 message,
-                                 'nigirifalls@gmail.com',
-                                 [order.email])
-            # Generate PDF
-            html = render_to_string('takeaway/order/order_create_pdf.html',
-                                    {'order': order})
-            out = BytesIO()
-            weasyprint.HTML(string=html).write_pdf(
-                out, stylesheets=[weasyprint.CSS(
-                    settings.STATIC_ROOT + '/takeaway/pdf_style.css'
-                    )]
-                )
-            
-            # Attach email
-            email.attach('order_{}.pdf'.format(order.id),
-                         out.getvalue(),
-                         'application/pdf')
-            # Send email
-            email.send()
+            send_order_email_with_pdf(order, 'Please find attached the order confirmation for your recent order.')
+
             return render(request, 'takeaway/thankyou.html',
                           {'order': order})
     else:
         form = OrderCreateForm()
     return render(request, 'takeaway/checkout.html',
                   {'cart': cart, 'form': form})
-
-
-def create_order_pdf(request, order_id):
-    order = get_object_or_404(OrderInfo, id=order_id)
-    html = render_to_string('takeaway/order/order_create_pdf.html',
-                            {'order': order})
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename=order_{}.pdf"'.format(order.id)
-    weasyprint.HTML(string=html).write_pdf(
-        response, stylesheets=[weasyprint.CSS(
-            settings.STATIC_ROOT + 'takeaway/pdf_style.css'
-        )]
-    )
-    return response
