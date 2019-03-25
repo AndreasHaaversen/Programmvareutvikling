@@ -6,7 +6,7 @@ import weasyprint
 
 
 def send_order_email_with_pdf(order, message):
-    # Create order confirmation email
+    # Create order email
     subject = 'Nigiri Falls - Order no. {}'.format(order.id)
     email = EmailMessage(subject,
                          message,
@@ -26,5 +26,17 @@ def send_order_email_with_pdf(order, message):
     email.attach('order_{}.pdf'.format(order.id),
                  out.getvalue(),
                  'application/pdf')
+    # Send email
+    email.send()
+
+
+def send_email(order, message):
+    # Create order confirmation email
+    subject = 'Nigiri Falls - Order no. {}'.format(order.id)
+    email = EmailMessage(subject,
+                         message,
+                         'nigirifalls@gmail.com',
+                         [order.email])
+
     # Send email
     email.send()
