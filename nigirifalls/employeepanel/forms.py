@@ -14,3 +14,7 @@ class UpdateOrderStatusForm(forms.ModelForm):
     class Meta:
         model = OrderInfo
         fields = ['status']
+        labels = {
+            'status': 'Set status to'
+        }
+
