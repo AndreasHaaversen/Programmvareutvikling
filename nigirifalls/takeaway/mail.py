@@ -18,9 +18,7 @@ def send_order_email_with_pdf(order, message):
     out = BytesIO()
     weasyprint.HTML(string=html).write_pdf(
         out, stylesheets=[weasyprint.CSS(
-            settings.STATIC_ROOT + '/takeaway/pdf_style.css'
-            )]
-        )
+            settings.STATIC_ROOT + '/takeaway/pdf_style.css')])
 
     # Attach email
     email.attach('order_{}.pdf'.format(order.id),

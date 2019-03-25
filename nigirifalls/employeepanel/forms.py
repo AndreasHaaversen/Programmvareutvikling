@@ -17,4 +17,3 @@ class UpdateOrderStatusForm(forms.ModelForm):
         labels = {
             'status': 'Set status to'
         }
-
