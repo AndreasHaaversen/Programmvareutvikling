@@ -1,8 +1,9 @@
 import datetime
 
 from django import forms
-from takeaway.models import OrderInfo, Dish
+from takeaway.models import OrderInfo, Dish, OrderItem
 from django.utils import timezone
+
 
 ORDER_STATUS_CHOICES = (
     ('accepted', 'Accepted'),
@@ -43,7 +44,7 @@ class OrderUpdateForm(forms.ModelForm):
         pickup_time = cleaned_data.get('pickup_time')
 
         if self.instance.pickup_time < timezone.now() + datetime.timedelta(minutes=30):
-            self.add_error('pickup_time', 'Cannot edit an order after 30 minutes has passed!')
+            self.add_error('pickup_time', "Can't edit an order if there is less than 30 minutes to pickup time.")
 
         return cleaned_data
 
@@ -56,3 +57,20 @@ class OrderUpdateForm(forms.ModelForm):
         }
         template_name = 'employeepanel/orderedit.html'
         fields = ['name_of_customer','email','phone_number','pickup_time','comment']
+
+
+
+class OrderUpdateQuantityForm(forms.ModelForm):
+		
+    def clean(self):
+        cleaned_data = super(OrderUpdateQuantityForm, self).clean()
+	    
+        if self.instance.order.pickup_time < timezone.now() + datetime.timedelta(minutes=30):
+            self.add_error('quantity', "Can't edit an order if there is less than 30 minutes to pickup time.")
+
+        return cleaned_data
+
+    class Meta:
+        model = OrderItem
+        template_name = 'employeepanel/orderedit.html'
+        fields = ['quantity']

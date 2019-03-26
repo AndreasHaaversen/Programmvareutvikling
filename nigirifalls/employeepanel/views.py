@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render, reverse, redirect
 from django.urls import reverse
 from django.views.generic.edit import UpdateView, FormView
 from django.views.decorators.http import require_POST
-from .forms import UpdateOrderStatusForm, OrderUpdateForm
+from .forms import UpdateOrderStatusForm, OrderUpdateForm, OrderUpdateQuantityForm
 from django.utils import timezone
 import datetime
 from django.contrib import messages
@@ -34,8 +34,9 @@ class EditOrderView(UpdateView):
 
 class EditOrderItemView(UpdateView):
     model = OrderItem
+    form_class = OrderUpdate QuantityForm
     template_name = 'employeepanel/orderedit.html'
-    fields = ['quantity']
+    
 
 class ActiveOrderView(generic.ListView):
     template_name = 'employeepanel/index.html'
