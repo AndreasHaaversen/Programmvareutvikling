@@ -36,6 +36,16 @@ class OrderUpdateForm(forms.ModelForm):
                 "Phone numbers must be 8 digits long"
             )
         return data
+		
+    def clean(self):
+        cleaned_data = super(OrderUpdateForm, self).clean()
+	    # Remove later if not needed
+        pickup_time = cleaned_data.get('pickup_time')
+
+        if self.instance.pickup_time < timezone.now() + datetime.timedelta(minutes=30):
+            self.add_error('pickup_time', 'Cannot edit an order after 30 minutes has passed!')
+
+        return cleaned_data
 
     class Meta:
         model = OrderInfo
