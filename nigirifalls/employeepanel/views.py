@@ -65,13 +65,13 @@ def update_order_status(request, pk):
         if cd['status'] == 'cancelled':
             send_order_email_with_pdf(
                 order,
-                'Please find attached order cancellation confirmation.'
+                "Please find attached order cancellation confirmation.\n\nSincerely,\nThe Nigiri Falls team"
             )
 
         if cd['status'] == 'ready':
             send_email(
                 order,
-                'Your order nr. {} is ready to be picked up!'.format(order.id)
+                "Your order nr. {} is ready to be picked up!\n\nSincerely,\nThe Nigiri Falls team".format(order.id)
             )
 
     return redirect(reverse('employeepanel:active_orders'))

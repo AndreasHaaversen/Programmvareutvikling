@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.core import mail
 from takeaway.models import OrderInfo
 from django.utils import timezone
 from users.models import CustomUser as User
@@ -85,6 +86,8 @@ class ActiveOrdersViewTests(TestCase):
                                             kwargs={'pk': order.id}),
                                     {'status': 'cancelled'})
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].subject, 'Nigiri Falls - Order no. ' + id)
         response = self.client.get(reverse('employeepanel:cancelled_orders'))
         self.assertContains(response, order.name_of_customer)
 
@@ -151,6 +154,7 @@ class CancelledOrdersViewTests(TestCase):
                                             kwargs={'pk': order.id}),
                                     {'status': 'prod'})
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
+        self.assertEqual(len(mail.outbox), 0)
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertContains(response, order.name_of_customer)
 
@@ -216,6 +220,8 @@ class CollectedOrdersViewTests(TestCase):
                                     {'status': 'cancelled'})
         response = self.assertRedirects(response,
                                         reverse('employeepanel:active_orders'))
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].subject, 'Nigiri Falls - Order no. ' + id)
         response = self.client.get(reverse('employeepanel:cancelled_orders'))
         self.assertContains(response, order.name_of_customer)
 

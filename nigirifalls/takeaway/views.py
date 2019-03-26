@@ -40,7 +40,9 @@ def order_create(request):
                                          quantity=item['quantity'])
             cart.clear()
 
-            send_order_email_with_pdf(order, 'Please find attached the order confirmation for your recent order.')
+            send_order_email_with_pdf(
+                order,
+                "Please find attached the order confirmation for your recent order.\n\nSincerely,\nThe Nigiri Falls team")
 
             return render(request, 'takeaway/thankyou.html',
                           {'order': order})
