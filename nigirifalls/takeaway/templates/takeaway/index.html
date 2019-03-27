@@ -16,11 +16,11 @@
             {% for result in search_results %}
                 <div class="item">
                     <span>
-                        <img src= {{ result.dish.image.url }} style="width:175px;height:175px;"><br/>
-                        {{ result.dish.name }} <br/>
-                        {{ result.dish.description }} <br/>
-                        Price: {{ result.dish.price }} kr.
-                        <form action="{% url "cart:cart_add" dish.id %}" method="post">
+                        <img src= {{ result.object.image.url }} style="width:175px;height:175px;"><br/>
+                        {{ result.object.name }} <br/>
+                        {{ result.object.description }} <br/>
+                        Price: {{ result.object.price }} kr.
+                        <form action="{% url "cart:cart_add" result.object.id %}" method="post">
                             {{ add_dish_form }}
                             {% csrf_token %}
                             <input type="submit" value="Add">
