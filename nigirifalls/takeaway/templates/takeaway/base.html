@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Nigiri Falls Takeaway</title>
-	<link id="favicon" rel="shortcut icon" href={% static 'takeaway/images/favicon.png'%} sizes="32x32" type="image/png">
+	  <link id="favicon" rel="shortcut icon" href={% static 'takeaway/images/favicon.png'%} sizes="32x32" type="image/png">
     <link rel="stylesheet" type="text/css" href="{% static 'takeaway/style.css' %}">
     {% block extra_css %}
     {% endblock extra_css %}
@@ -42,9 +42,9 @@
     {% endblock %}
 
     <div class="search-container">
-      <form action="{% url 'takeaway:search' %}">
-              <input name="q" value="{{request.GET.q}}">
-              <button type="submit">Go</button>
+        <form action="{% url 'takeaway:search' %}">
+            <input name="q" value="{{request.GET.q}}">
+            <button type="submit">Go</button>
         </form>
     </div>
 
