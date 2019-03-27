@@ -107,7 +107,8 @@ form p input {
     bottom: 0;
     text-align: center;
     margin-right: 250px;
-    margin-bottom: 25px;
+    padding-bottom: 25px;
+    background-color: white;
 }
 
 .footer a {
