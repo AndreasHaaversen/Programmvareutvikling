@@ -133,3 +133,31 @@ class ThankYouViewTests(TestCase):
                                            args=(self.order.id,)))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'takeaway/thankyou.html')
+
+
+class SearchViewTests(TestCase):
+
+    def setUp(self):
+        create_dish("Maki", "Delicious roll", 123.45, "rolls")
+        return super().setUp()
+
+    def test_view_url_exists_at_desired_location(self):
+        response = self.client.get('/takeaway/search/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('takeaway:search'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('takeaway:search'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'takeaway/index.html')
+
+    def test_search_by_name(self):
+        response = self.client.get('/takeaway/search/?q=maki')
+        self.assertContains(response, 'Maki')
+
+    def test_search_by_description(self):
+        response = self.client.get('/takeaway/search/?q=Delicious')
+        self.assertContains(response, 'Delicious')
