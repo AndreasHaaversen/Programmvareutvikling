@@ -34,7 +34,7 @@ class EditOrderView(UpdateView):
 
 class EditOrderItemView(UpdateView):
     model = OrderItem
-    form_class = OrderUpdate QuantityForm
+    form_class = OrderUpdateQuantityForm
     template_name = 'employeepanel/orderedit.html'
     
 
