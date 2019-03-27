@@ -1,0 +1,50 @@
+<body>
+    <h1>Nigiri Falls</h1>
+    <p>
+        Order no. {{ order.id }} </br>
+        <span class="secondary">
+            {{ order.created|date:"d M, Y" }}
+        </span>
+    </p>
+
+    <h3>Recipient</h3>
+    <p>
+        {{ order.name_of_customer }}<br>
+        {{ order.email }}<br>
+        {{ order.phone_number }}
+    </p>
+
+    <h3>Pickup time</h3>
+    {{ order.pickup_time }}
+
+    <h3>Dishes ordred</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.dishes.all %}
+                <tr class="row{% cycle "1" "2"%}">
+                    <td>{{ item.dish.name }}</td>
+                    <td class ="num"> {{ item.price }} kr.</td>
+                    <td class="num"> {{ item.quantity}}</td>
+                    <td class="num"> {{item.get_cost}} kr.</td>
+                </tr>
+            {% endfor %}
+                <tr class="total">
+                    <td colspan="3">Total</td>
+                    <td class="num">{{ order.get_order_total }} kr.</td>
+                </tr>
+        </tbody>
+    </table>
+    <h3>Info</h3>
+        <p>
+            Order status: {{ order.get_status_display }}<br>
+            Comments: {{ order.comment }}
+        </p>
+</body>

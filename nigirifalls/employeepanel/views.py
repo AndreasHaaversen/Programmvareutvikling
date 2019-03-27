@@ -3,6 +3,7 @@ from takeaway.models import OrderInfo
 from django.shortcuts import get_object_or_404, render, reverse, redirect
 from django.urls import reverse
 from django.views.decorators.http import require_POST
+from takeaway.mail import send_order_email_with_pdf, send_email
 from .forms import UpdateOrderStatusForm
 
 
@@ -60,4 +61,17 @@ def update_order_status(request, pk):
         cd = form.cleaned_data
         order.status = cd['status']
         order.save(update_fields=['status'])
+
+        if cd['status'] == 'cancelled':
+            send_order_email_with_pdf(
+                order,
+                "Please find attached order cancellation confirmation.\n\nSincerely,\nThe Nigiri Falls team"
+            )
+
+        if cd['status'] == 'ready':
+            send_email(
+                order,
+                "Your order nr. {} is ready to be picked up!\n\nSincerely,\nThe Nigiri Falls team".format(order.id)
+            )
+
     return redirect(reverse('employeepanel:active_orders'))

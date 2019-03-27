@@ -30,34 +30,34 @@
 				<td>{{ order.name_of_customer }}</td>
 				<td>{{ order.phone_number }}</td>
 				<td>
-				{% for dishes in order.dishes.all %}
-					{% if not forloop.last %}
-					<p>{{ dishes.dish.name }}</p>
-					<hr>
-					{% else %}
-					<p>{{ dishes.dish.name }}</p>
-					{% endif %}
-				{% endfor %}
+					{% for dishes in order.dishes.all %}
+						{% if not forloop.last %}
+							<p>{{ dishes.dish.name }}</p>
+							<hr>
+						{% else %}
+							<p>{{ dishes.dish.name }}</p>
+						{% endif %}
+					{% endfor %}
 				</td>
 				<td>
-				{% for dishes in order.dishes.all %}
-					{% if not forloop.last %}
-					<p>{{ dishes.quantity }}</p>
-					<hr>
-					{% else %}
-					<p>{{ dishes.quantity }}</p>
-					{% endif %}
-				{% endfor %}
+					{% for dishes in order.dishes.all %}
+						{% if not forloop.last %}
+							<p>{{ dishes.quantity }}</p>
+							<hr>
+						{% else %}
+							<p>{{ dishes.quantity }}</p>
+						{% endif %}
+					{% endfor %}
 				</td>
 				<td>{{ order.get_order_total }}</td>
 				<td>{{ order.comment }}</td>
 				<td>{{ order.get_status_display }}</td>
 				<td>
-				<form action="{% url 'employeepanel:update_order' order.id %}" method="post">
-					{{ update_order_status_form.as_p }}
-					{% csrf_token %}
-					<input type="submit" value="Update">
-				</form>
+					<form action="{% url 'employeepanel:update_order' order.id %}" method="post">
+						{{ update_order_status_form.as_p }}
+						{% csrf_token %}
+						<input type="submit" value="Update">
+					</form>
 				</td>
 			<tr>
 		{% endfor %}

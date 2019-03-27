@@ -7,6 +7,7 @@ def get_image_path(instance, filename):
 
 
 class Allergen(models.Model):
+
     ALLERGEN_CHOICES = (
         ('none', ' '),
         ('gluten', 'G'),
@@ -69,6 +70,8 @@ class OrderInfo(models.Model):
     comment = models.CharField(max_length=250, blank=True)
     status = models.CharField(max_length=10, choices=ORDER_STATUS_CHOICES,
                               default='accepted')
+
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return 'Order {}'.format(self.id)
