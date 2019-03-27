@@ -149,7 +149,7 @@ class ThankYouViewTests(TestCase):
 
 class UserAccountTests(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(first_name= "Astrid", last_name = "Bakken", username='testuser',
+        self.user = User.objects.create_user(first_name="Astrid", last_name="Bakken", username='testuser',
                                              password='12345', email="abc@abc.no",
                                              phone_number="88888888")
         self.user.save()
@@ -165,6 +165,3 @@ class UserAccountTests(TestCase):
         self.assertContains(response, "Astrid Bakken")
         self.assertContains(response, "88888888")
         self.assertContains(response, "abc@abc.no")
-
-
-
