@@ -10,8 +10,8 @@
 
 {% block content %}
 
-<div class="search">
 {% if is_search == True %}
+<div class="search">
     <h1>Search results{% if query %} for &ldquo;{{query}}&rdquo;{% endif %}</h1>
     {% if search_results %}
         <div class="search_container">
@@ -30,6 +30,7 @@
                     </span>
                 </div>
             {% endfor %}
+        </div>
     {% else %}
         {% if query %}
             <p><em>There are no results to display.</em></p>

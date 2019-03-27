@@ -48,12 +48,13 @@
 
     </div>
 
-
+    <div class='block_content'>
       {% block content %}
       {% endblock %}
-
+    </div>
 
     <div class="footer">
+    <br/>
     <hr>
       {% if user.is_authenticated %}
         <p> Hi {{ user.username }}! </p>
