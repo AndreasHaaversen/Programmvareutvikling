@@ -42,11 +42,11 @@
     {% endblock %}
 
     <div class="search-container">
-      <form action="{% url 'watson:search' %}">
+      <form action="{% url 'takeaway:search' %}">
               <input name="q" value="{{request.GET.q}}">
-              <button type="submit">Submit</button>
-          </form>
-      </div>
+              <button type="submit">Go</button>
+        </form>
+    </div>
 
 </body>
 
