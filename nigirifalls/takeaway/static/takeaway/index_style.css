@@ -24,7 +24,6 @@ div.search_container {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    font-size: 1.2em;
 }
 
 div.item {
@@ -46,7 +45,10 @@ div.main {
 .allergen {
     text-align: center;
     font-size: 0.75em;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-right: 250px;
 
-    }
+}
+
+.search {
+    margin-left: 150px;
+}
