@@ -37,16 +37,18 @@
               {% endif %}
             {% endwith %}
         </div>
+
+        <div class="search-container">
+            <form action="{% url 'takeaway:search' %}">
+                <input name="q" placeholder="Search" value="{{request.GET.q}}">
+                <button type="submit">Go</button>
+            </form>
+        </div>
+
     </div>
+    
     {% block content %}
     {% endblock %}
-
-    <div class="search-container">
-        <form action="{% url 'takeaway:search' %}">
-            <input name="q" value="{{request.GET.q}}">
-            <button type="submit">Go</button>
-        </form>
-    </div>
 
 </body>
 

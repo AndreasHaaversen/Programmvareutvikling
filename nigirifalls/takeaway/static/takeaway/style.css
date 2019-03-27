@@ -52,13 +52,6 @@ form p input {
 	background-color: #669eac;
 }
 
-.subheader {
-    float: right;
-}
-.subheader a {
-	color: #669eac !important;
-}
-
 .header ul {
     display: inline;
     list-style-type: none;
@@ -93,4 +86,15 @@ form p input {
 .header a:link, a:visited{
 	text-decoration: none;
 	color: white;
+}
+
+.subheader {
+    float: right;
+}
+.subheader a {
+	color: #669eac !important;
+}
+
+.cart {
+    padding-bottom: 10px;
 }

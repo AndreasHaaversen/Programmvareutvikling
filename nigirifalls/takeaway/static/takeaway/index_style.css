@@ -26,17 +26,6 @@ div.item {
     margin: 1.33%;
 }
 
-.subheader {
-    grid-area: subheader;
-    text-align: right;
-    height: 1vh;
-}
-
-div.footer {
-    grid-area: footer;
-    height: 1vh;
-}
-
 div.main {
     grid-area: content;
 }
