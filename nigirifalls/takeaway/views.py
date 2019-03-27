@@ -47,6 +47,11 @@ def order_create(request):
             return render(request, 'takeaway/thankyou.html',
                           {'order': order})
     else:
-        form = OrderCreateForm()
+        if request.user.is_authenticated:
+            form = OrderCreateForm(initial={'name_of_customer': request.user.get_full_name(),
+                                            'email': request.user.email,
+                                            'phone_number': str(request.user.phone_number)})
+        else:
+            form = OrderCreateForm()
     return render(request, 'takeaway/checkout.html',
                   {'cart': cart, 'form': form})

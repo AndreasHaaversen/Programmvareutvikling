@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.core.validators import ValidationError
 from django.utils import timezone
+from users.models import CustomUser as User
 
 from nigirifalls.settings import CART_SESSION_ID
 from .models import Dish, OrderInfo, Allergen
@@ -144,3 +145,23 @@ class ThankYouViewTests(TestCase):
                                            args=(self.order.id,)))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'takeaway/thankyou.html')
+
+
+class UserAccountTests(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(first_name="Astrid", last_name="Bakken", username='testuser',
+                                             password='12345', email="abc@abc.no",
+                                             phone_number="88888888")
+        self.user.save()
+        login = self.client.login(username='testuser', password='12345')
+        return super().setUp()
+
+    def test_prepopulated_forms(self):
+        """
+        If user is logged in, the checkout field should be prepopulated
+        """
+        # creates user, simulates logged in user
+        response = self.client.get(reverse('takeaway:order_create'))
+        self.assertContains(response, "Astrid Bakken")
+        self.assertContains(response, "88888888")
+        self.assertContains(response, "abc@abc.no")
