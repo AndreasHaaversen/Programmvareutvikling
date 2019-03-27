@@ -36,13 +36,12 @@
 				<td>{{ order.phone_number }}</td>
 				<td>
 				{% for dishes in order.dishes.all %}
-					{% if not forloop.last %}
 					<p><a class "button" href="/employeepanel/order/{{ dishes.id }}/edititem/">{{ dishes.dish.name }}</a></p>
 					<hr>
-					{% else %}
-					<p><a class "button" href="/employeepanel/order/{{ dishes.id }}/edititem/">{{ dishes.dish.name }}</a></p>
-					{% endif %}
 				{% endfor %}
+					<a href="/">
+						<img border="0" style="margin-top: 5px;" alt="Add Dish" src="{% static 'employeepanel/plus.png' %}" width="30" height="30">
+					</a>
 				</td>
 				<td>
 				{% for dishes in order.dishes.all %}
