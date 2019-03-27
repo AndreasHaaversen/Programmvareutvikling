@@ -4,9 +4,7 @@ from .models import Dish, OrderInfo, OrderItem
 from .forms import OrderCreateForm
 from cart.forms import CartAddDishForm
 from cart.cart import Cart
-
-
-
+from watson import search as watson
 
 
 class IndexView(generic.ListView):
@@ -19,6 +17,7 @@ class IndexView(generic.ListView):
         context = super().get_context_data()
         context['add_dish_form'] = CartAddDishForm()
         context['cart'] = Cart(self.request)
+        context['is_search'] = False
         return context
 
 
@@ -49,13 +48,12 @@ def order_create(request):
 class SearchView(generic.ListView):       
     template_name = 'takeaway/index.html'
 
-    def get_queryset(self):
-        return Dish.objects.filter(dish_type__icontains=(self.kwargs['search'][9:])).order_by('dish_type')
-
     def get_context_data(self):
         context = super().get_context_data()
         context['add_dish_form'] = CartAddDishForm()
         context['cart'] = Cart(self.request)
+        context['is_search'] = True
+        search_results = watson.filter(Dish, "q")
         return context
 
 

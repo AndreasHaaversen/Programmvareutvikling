@@ -41,4 +41,12 @@
     {% block content %}
     {% endblock %}
 
+    <div class="search-container">
+      <form action="{% url 'watson:search' %}">
+              <input name="q" value="{{request.GET.q}}">
+              <button type="submit">Submit</button>
+          </form>
+      </div>
+
 </body>
+

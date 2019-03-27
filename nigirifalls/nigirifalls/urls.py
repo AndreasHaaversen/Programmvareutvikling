@@ -23,6 +23,7 @@ urlpatterns = [
     path('', views.takeawayredirect, name='index'),
     path('takeaway/', include('takeaway.urls')),
     path('cart/', include('cart.urls')),
+    path("search/", include("watson.urls", namespace="watson")),
     path('admin/', admin.site.urls),
     path('employeepanel/', include('employeepanel.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
