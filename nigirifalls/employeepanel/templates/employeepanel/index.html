@@ -15,7 +15,7 @@
 	{% if order_list %}
 		<br>
 		<br>
-		<table>
+		<table style="margin-bottom:100px;">
 			<tr>
 				<th>Pickup time</th>
 				<th>#</th>
@@ -39,8 +39,8 @@
 					<p><a class "button" href="/employeepanel/order/{{ dishes.id }}/edititem/">{{ dishes.dish.name }}</a></p>
 					<hr>
 				{% endfor %}
-					<div class="link" style="font-size: 40px;text-decoration:none;">
-						<a class "button" style="text-decoration:none;"href="/employeepanel/new/orderitem">+</a>
+					<div class="link" style="font-size: 30px;margin:0px;text-decoration:none;">
+						<a class "button" style="text-decoration:none;margin:0px;"href="/employeepanel/order/{{ order.id }}/additem">+</a>
 					</div>
 				</td>
 				<td>
@@ -48,8 +48,8 @@
 					<p>{{ dishes.quantity }}</p>
 					<hr>
 				{% endfor %}
-					<div class="link" style="font-size: 40px;text-decoration:none;visibility:hidden;">
-						<a class "button" style="text-decoration:none"href="/">+</a>
+					<div class="link" style="font-size: 30px;text-decoration:none;visibility:hidden;">
+						<a class "button" style="text-decoration:none;margin:0px;"href="/">+</a>
 					</div>
 				</td>
 				<td>{{ order.get_order_total }}</td>

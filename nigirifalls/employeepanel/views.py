@@ -36,12 +36,11 @@ class EditOrderItemView(UpdateView):
     model = OrderItem
     form_class = OrderUpdateQuantityForm
     template_name = 'employeepanel/orderedit.html'
-	
+
 class AddOrderItemView(CreateView):
     model = OrderItem
     form_class = AddOrderItemForm
     template_name = 'employeepanel/orderedit.html'
-    
 
 class ActiveOrderView(generic.ListView):
     template_name = 'employeepanel/index.html'

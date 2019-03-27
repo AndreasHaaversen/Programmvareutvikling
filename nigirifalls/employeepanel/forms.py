@@ -62,9 +62,12 @@ class AddOrderItemForm(forms.ModelForm):
 		
     def clean(self):
         cleaned_data = super(AddOrderItemForm, self).clean()
-	    
         self.instance.price = cleaned_data.get('dish').price
+        #self.instance.order_id = 2
 		
+        if cleaned_data.get('order').pickup_time < timezone.now() + datetime.timedelta(minutes=30):
+            self.add_error('order', "Can't edit an order if there is less than 30 minutes to pickup time.")
+
         return cleaned_data
 
     class Meta:
