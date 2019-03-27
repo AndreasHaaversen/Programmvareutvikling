@@ -40,6 +40,7 @@ class Dish(models.Model):
         ('menu', 'Menu'),
     )
 
+
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to=get_image_path, height_field=None,
@@ -48,6 +49,9 @@ class Dish(models.Model):
     dish_type = models.CharField(max_length=7, choices=DISH_TYPE_CHOICES,
                                  default='maki')
     allergy_info = models.ManyToManyField(Allergen, default='none')
+
+    class Meta:
+        verbose_name_plural = "Dishes"
 
     def __str__(self):
         return self.name
