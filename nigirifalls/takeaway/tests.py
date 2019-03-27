@@ -39,7 +39,7 @@ class DishIndexViewTests(TestCase):
         """
         response = self.client.get(reverse('takeaway:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, text='No dishes are availible.')
+        self.assertContains(response, text='No dishes are available.')
         self.assertQuerysetEqual(response.context['dish_list'], [])
 
     def test_has_dish(self):
