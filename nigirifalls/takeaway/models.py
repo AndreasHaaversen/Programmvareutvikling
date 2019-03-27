@@ -40,7 +40,6 @@ class Dish(models.Model):
         ('menu', 'Menu'),
     )
 
-
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to=get_image_path, height_field=None,
