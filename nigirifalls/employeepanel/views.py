@@ -2,9 +2,9 @@ from django.views import generic
 from takeaway.models import OrderInfo, OrderItem
 from django.shortcuts import get_object_or_404, render, reverse, redirect
 from django.urls import reverse
-from django.views.generic.edit import UpdateView, FormView
+from django.views.generic.edit import UpdateView, FormView, CreateView
 from django.views.decorators.http import require_POST
-from .forms import UpdateOrderStatusForm, OrderUpdateForm, OrderUpdateQuantityForm
+from .forms import UpdateOrderStatusForm, OrderUpdateForm, OrderUpdateQuantityForm, AddOrderItemForm
 from django.utils import timezone
 import datetime
 from django.contrib import messages
@@ -35,6 +35,11 @@ class EditOrderView(UpdateView):
 class EditOrderItemView(UpdateView):
     model = OrderItem
     form_class = OrderUpdateQuantityForm
+    template_name = 'employeepanel/orderedit.html'
+	
+class AddOrderItemView(CreateView):
+    model = OrderItem
+    form_class = AddOrderItemForm
     template_name = 'employeepanel/orderedit.html'
     
 

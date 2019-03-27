@@ -39,19 +39,18 @@
 					<p><a class "button" href="/employeepanel/order/{{ dishes.id }}/edititem/">{{ dishes.dish.name }}</a></p>
 					<hr>
 				{% endfor %}
-					<a href="/">
-						<img border="0" style="margin-top: 5px;" alt="Add Dish" src="{% static 'employeepanel/plus.png' %}" width="30" height="30">
-					</a>
+					<div class="link" style="font-size: 40px;text-decoration:none;">
+						<a class "button" style="text-decoration:none;"href="/employeepanel/new/orderitem">+</a>
+					</div>
 				</td>
 				<td>
 				{% for dishes in order.dishes.all %}
-					{% if not forloop.last %}
 					<p>{{ dishes.quantity }}</p>
 					<hr>
-					{% else %}
-					<p>{{ dishes.quantity }}</p>
-					{% endif %}
 				{% endfor %}
+					<div class="link" style="font-size: 40px;text-decoration:none;visibility:hidden;">
+						<a class "button" style="text-decoration:none"href="/">+</a>
+					</div>
 				</td>
 				<td>{{ order.get_order_total }}</td>
 				<td>{{ order.comment }}</td>

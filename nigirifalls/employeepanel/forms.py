@@ -58,7 +58,19 @@ class OrderUpdateForm(forms.ModelForm):
         template_name = 'employeepanel/orderedit.html'
         fields = ['name_of_customer','email','phone_number','pickup_time','comment']
 
+class AddOrderItemForm(forms.ModelForm):
+		
+    def clean(self):
+        cleaned_data = super(AddOrderItemForm, self).clean()
+	    
+        self.instance.price = cleaned_data.get('dish').price
+		
+        return cleaned_data
 
+    class Meta:
+        model = OrderItem
+        template_name = 'employeepanel/orderedit.html'
+        fields = ['order','dish','quantity']
 
 class OrderUpdateQuantityForm(forms.ModelForm):
 		
