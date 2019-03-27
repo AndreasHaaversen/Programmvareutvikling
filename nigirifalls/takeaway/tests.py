@@ -56,7 +56,8 @@ class DishIndexViewTests(TestCase):
         If there are allergens in the dish, show it to the user.
         """
         allergen = Allergen.objects.create(name='fish')
-        dish = Dish.objects.create(name='Laksemaki', image='index.jpg', description='Klassisk maki', price='123',
+        dish = Dish.objects.create(name='Laksemaki', image='index.jpg',
+                                   description='Klassisk maki', price='123',
                                    dish_type='maki')
         dish.allergy_info.add(allergen)
         response = self.client.get(reverse('takeaway:index'))
@@ -149,8 +150,11 @@ class ThankYouViewTests(TestCase):
 
 class UserAccountTests(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(first_name="Astrid", last_name="Bakken", username='testuser',
-                                             password='12345', email="abc@abc.no",
+        self.user = User.objects.create_user(first_name="Astrid",
+                                             last_name="Bakken",
+                                             username='testuser',
+                                             password='12345',
+                                             email="abc@abc.no",
                                              phone_number="88888888")
         self.user.save()
         login = self.client.login(username='testuser', password='12345')
@@ -165,3 +169,31 @@ class UserAccountTests(TestCase):
         self.assertContains(response, "Astrid Bakken")
         self.assertContains(response, "88888888")
         self.assertContains(response, "abc@abc.no")
+
+
+class SearchViewTests(TestCase):
+
+    def setUp(self):
+        create_dish("Maki", "Delicious roll", 123.45, "rolls")
+        return super().setUp()
+
+    def test_view_url_exists_at_desired_location(self):
+        response = self.client.get('/takeaway/search/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('takeaway:search'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('takeaway:search'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'takeaway/index.html')
+
+    def test_search_by_name(self):
+        response = self.client.get('/takeaway/search/?q=maki')
+        self.assertContains(response, 'Maki')
+
+    def test_search_by_description(self):
+        response = self.client.get('/takeaway/search/?q=Delicious')
+        self.assertContains(response, 'Delicious')

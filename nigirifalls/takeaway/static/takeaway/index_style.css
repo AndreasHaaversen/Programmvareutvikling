@@ -19,22 +19,19 @@ div.category {
     box-shadow: 1px 1px 1px #595959;
 }
 
+div.search_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
 div.item {
     display: flex;
     flex-direction: column;
     padding: 20px;
     margin: 1.33%;
-}
-
-.subheader {
-    grid-area: subheader;
-    text-align: right;
-    height: 1vh;
-}
-
-div.footer {
-    grid-area: footer;
-    height: 1vh;
 }
 
 div.main {

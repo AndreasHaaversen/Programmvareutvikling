@@ -7,6 +7,8 @@ from .forms import OrderCreateForm
 from .mail import send_order_email_with_pdf
 from cart.forms import CartAddDishForm
 from cart.cart import Cart
+from watson import search as watson
+from watson.views import SearchView
 
 
 class IndexView(generic.ListView):
@@ -19,6 +21,7 @@ class IndexView(generic.ListView):
         context = super().get_context_data()
         context['add_dish_form'] = CartAddDishForm()
         context['cart'] = Cart(self.request)
+        context['is_search'] = False
         return context
 
 
@@ -55,3 +58,16 @@ def order_create(request):
             form = OrderCreateForm()
     return render(request, 'takeaway/checkout.html',
                   {'cart': cart, 'form': form})
+
+
+class SearchView(SearchView):
+    template_name = 'takeaway/index.html'
+
+    models = (Dish,)
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['add_dish_form'] = CartAddDishForm()
+        context['cart'] = Cart(self.request)
+        context['is_search'] = True
+        return context

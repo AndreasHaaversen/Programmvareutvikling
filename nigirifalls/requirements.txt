@@ -9,3 +9,4 @@ dj-database-url
 django-widget-tweaks
 django-bootstrap4
 weasyprint
+django-watson

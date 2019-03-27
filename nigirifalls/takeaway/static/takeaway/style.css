@@ -95,6 +95,7 @@ form p input {
 
 .header a:link, a:visited, a:hover {
 	text-decoration: none;
+<<<<<<< HEAD
 }
 
 .content {
@@ -107,4 +108,18 @@ form p input {
 
 .footer a {
     color: grey !important;
+=======
+	color: white;
+}
+
+.subheader {
+    float: right;
+}
+.subheader a {
+	color: #669eac !important;
+}
+
+.cart {
+    padding-bottom: 10px;
+>>>>>>> søk_i_matretter_aksel
 }

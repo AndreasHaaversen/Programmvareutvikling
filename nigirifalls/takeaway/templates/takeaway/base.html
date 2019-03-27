@@ -16,7 +16,11 @@
         <a href={% url 'takeaway:index' %}><h1>Nigiri Falls</h1></a>
         <ul>
             <li><a href={% url 'takeaway:index' %}>Contact</a></li>
+<<<<<<< HEAD
 		      	<li><a href={% url 'employeepanel:active_orders' %}>Employee panel</a></li>
+=======
+			      <li><a href={% url 'employeepanel:active_orders' %}>Employee panel</a></li>
+>>>>>>> søk_i_matretter_aksel
             <li><a href={% url 'takeaway:index' %}>Takeaway</a></li>
             <li><a href={% url 'takeaway:index' %}>Table reservations</a></li> 
             <li><a href={% url 'takeaway:index' %}>Home</a></li>
@@ -38,6 +42,14 @@
               {% endif %}
             {% endwith %}
         </div>
+
+        <div class="search-container">
+            <form action="{% url 'takeaway:search' %}">
+                <input name="q" placeholder="Search" value="{{request.GET.q}}">
+                <button type="submit">Go</button>
+            </form>
+        </div>
+
     </div>
 
 
@@ -61,3 +73,4 @@
     </div>
 
 </body>
+
