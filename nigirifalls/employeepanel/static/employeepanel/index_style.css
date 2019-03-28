@@ -6,24 +6,49 @@
 button {
 	height: 70px;
 }
+.error p {
+	font-size: 20px;
+	color: red;
+}
 table p {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+p a {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 table {
+	margin-left: 10%;
 	border-collapse: collapse;
-	width: 80%;
 }
 
 th {
-	font-size: 20px !important;
+	font-size: 23px !important;
 	color: white;
 	text-align: center;
+	font-weight: normal;
 }
-table, th, td {
+form p label {
+	text-align: right;
+	font-size: 20px !important;
+}
+table a {
+	color: #669eac !important;
+}
+input {
+	font-size: 20px;
+}
+select {
+	font-size: 20px;
+}
+table {
+	width: 80%;
+}
+table th, td {
 	border: 3px solid #5c9aa7;
-	font-size: 16px;
-	table-layout: auto;
+	font-size: 20px;
+	table-layout: fixed;
 }
 table hr {
 	color: #5c9aa7;
@@ -31,36 +56,6 @@ table hr {
 }
 th {
 	background-color: #669eac;
-}
-
-th:nth-of-type(1) {
-	width: 10%;
-}
-
-th:nth-of-type(2) {
-	width: 2%;
-}
-
-th:nth-of-type(4) {
-	width: 7%;
-}
-
-th:nth-of-type(5) {
-	width: 20%;
-}
-
-th:nth-of-type(6) {
-	width: 1%;
-}
-
-th:nth-of-type(7) {
-	width: 10%;
-}
-th:nth-of-type(8) {
-	width: 40%;
-}
-th:nth-of-type(9) {
-	width: 10%;
 }
 td {
 	padding: 7px;
