@@ -56,6 +56,7 @@ class CollectedOrderView(GenericOrderView):
     def get_queryset(self):
         return OrderInfo.objects.filter(status="collected")
 
+
 class EditOrderView(UpdateView):
     model = OrderInfo
     form_class = OrderUpdateForm

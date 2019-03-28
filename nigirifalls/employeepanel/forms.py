@@ -22,6 +22,7 @@ class UpdateOrderStatusForm(forms.ModelForm):
             'status': 'Set status to'
         }
 
+
 class OrderUpdateForm(forms.ModelForm):
 
     def clean_pickup_time(self):

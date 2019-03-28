@@ -92,7 +92,7 @@ class ActiveOrdersViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertContains(response, order.name_of_customer)
         response = self.client.post(reverse('employeepanel:update_order',
-                                            kwargs={'pk': order.id}),
+                                            args=(order.id,)),
                                     {'status': 'cancelled'})
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
         self.assertEqual(len(mail.outbox), 1)
@@ -111,7 +111,7 @@ class ActiveOrdersViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertContains(response, order.name_of_customer)
         response = self.client.post(reverse('employeepanel:update_order',
-                                            kwargs={'pk': order.id}),
+                                            args=(order.id,)),
                                     {'status': 'cancelled'})
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
         response = self.client.get(reverse('employeepanel:cancelled_orders'))
@@ -177,7 +177,7 @@ class CancelledOrdersViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:cancelled_orders'))
         self.assertContains(response, order.name_of_customer)
         response = self.client.post(reverse('employeepanel:update_order',
-                                            kwargs={'pk': order.id}),
+                                            args=(order.id,)),
                                     {'status': 'prod'})
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
         self.assertEqual(len(mail.outbox), 0)
@@ -242,7 +242,7 @@ class CollectedOrdersViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:collected_orders'))
         self.assertContains(response, order.name_of_customer)
         response = self.client.post(reverse('employeepanel:update_order',
-                                            kwargs={'pk': order.id}),
+                                            args=(order.id,)),
                                     {'status': 'cancelled'})
         response = self.assertRedirects(response,
                                         reverse('employeepanel:active_orders'))
@@ -262,7 +262,7 @@ class CollectedOrdersViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:collected_orders'))
         self.assertContains(response, order.name_of_customer)
         response = self.client.post(reverse('employeepanel:update_order',
-                                            kwargs={'pk': order.id}),
+                                            args=(order.id,)),
                                     {'status': 'cancelled'})
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
         response = self.client.get(reverse('employeepanel:active_orders'))
@@ -288,7 +288,7 @@ class EditOrderViewTests(TestCase):
                                          pickup_time=time,
                                          status='collected')
         response = self.client.get(
-            reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
+            reverse('employeepanel:edit_order', args=(order.id,)))
         self.assertEqual(response.status_code, 200)
 
     def test_view_uses_correct_template(self):
@@ -299,7 +299,7 @@ class EditOrderViewTests(TestCase):
                                          pickup_time=time,
                                          status='collected')
         response = self.client.get(
-            reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
+            reverse('employeepanel:edit_order', args=(order.id,)))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
 
@@ -313,10 +313,10 @@ class EditOrderViewTests(TestCase):
         id = str(order.id)
         newnumber = 12345678
         response = self.client.get(
-            reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
+            reverse('employeepanel:edit_order', args=(order.id,)))
         self.assertContains(response, order.name_of_customer)
         response = self.client.post(reverse('employeepanel:edit_order',
-                                            kwargs={'pk': order.id}),
+                                            args=(order.id,)),
                                     {'phone_number': newnumber})
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertNotContains(response, newnumber)
@@ -337,9 +337,9 @@ class EditOrderItemViewTest(TestCase):
                                              price=makedish.price,
                                              quantity=1)
         response = self.client.get(
-            reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
+            reverse('employeepanel:edit_order_item', args=(makeorder.id,)))
         response = self.client.post(reverse('employeepanel:edit_order_item',
-                                            kwargs={'pk': makeorder.id}),
+                                            args=(makeorder.id,)),
                                     {'quantity': 33})
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertNotContains(response, 33)
@@ -372,7 +372,7 @@ class EditOrderItemViewTest(TestCase):
                                              price=makedish.price,
                                              quantity=1)
         response = self.client.get(
-            reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
+            reverse('employeepanel:edit_order_item', args=(makeorder.id,)))
         self.assertEqual(response.status_code, 200)
 
     def test_view_uses_correct_template(self):
@@ -388,7 +388,7 @@ class EditOrderItemViewTest(TestCase):
                                              price=makedish.price,
                                              quantity=1)
         response = self.client.get(
-            reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
+            reverse('employeepanel:edit_order_item', args=(makeorder.id,)))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
 
@@ -412,7 +412,7 @@ class AddOrderItemViewTests(TestCase):
                                          pickup_time=time,
                                          status='collected')
         response = self.client.get(
-            reverse('employeepanel:add_order_item', kwargs={'orderid': order.id}))
+            reverse('employeepanel:add_order_item', args=(order.id,)))
         self.assertEqual(response.status_code, 200)
 
     def test_view_uses_correct_template(self):
@@ -423,7 +423,7 @@ class AddOrderItemViewTests(TestCase):
                                          pickup_time=time,
                                          status='collected')
         response = self.client.get(
-            reverse('employeepanel:add_order_item', kwargs={'orderid': order.id}))
+            reverse('employeepanel:add_order_item', args=(order.id,)))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
 
