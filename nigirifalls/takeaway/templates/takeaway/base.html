@@ -11,59 +11,59 @@
 </head>
 
 <body>
-    <div class="header">
-        <a href={% url 'takeaway:index' %}><img src={% static 'takeaway/images/Logo.png'%} style="width:150px;height:150px;float:left"></a>
-        <a href={% url 'takeaway:index' %}><h1>Nigiri Falls</h1></a>
-        <ul>
-            <li><a href={% url 'takeaway:index' %}>Contact</a></li>
-			      <li><a href={% url 'employeepanel:active_orders' %}>Employee panel</a></li>
-            <li><a href={% url 'takeaway:index' %}>Takeaway</a></li>
-            <li><a href={% url 'takeaway:index' %}>Table reservations</a></li> 
-            <li><a href={% url 'takeaway:index' %}>Home</a></li>
-        </ul> 
+    <div class="page-container">
+        <div class="header">
+            <a href={% url 'takeaway:index' %}><img src={% static 'takeaway/images/Logo.png'%} style="width:150px;height:150px;float:left"></a>
+            <a href={% url 'takeaway:index' %}><h1>Nigiri Falls</h1></a>
+            <ul>
+                <li><a href={% url 'takeaway:index' %}>Contact</a></li>
+		    	      <li><a href={% url 'employeepanel:active_orders' %}>Employee panel</a></li>
+                <li><a href={% url 'takeaway:index' %}>Takeaway</a></li>
+                <li><a href={% url 'takeaway:index' %}>Table reservations</a></li> 
+                <li><a href={% url 'takeaway:index' %}>Home</a></li>
+            </ul> 
+            <hr>
+        </div>
+
+        <div class="subheader">
+            <div class="cart">
+              {% with total_items=cart|length %}
+                  {% if cart|length > 0 %}
+                    Your cart: 
+                    <a href="{% url "cart:cart_detail" %}">
+                      {{ total_items }} item{{ total_items|pluralize }},
+                      {{ cart.get_total_price }} kr.
+                    </a>
+                  {% else %}
+                    Your cart is empty.
+                  {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="search-container">
+                <form action="{% url 'takeaway:search' %}">
+                    <input name="q" placeholder="Search" value="{{request.GET.q}}">
+                    <button type="submit">Go</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class='block_content'>
+          {% block content %}
+          {% endblock %}
+        </div>
+
+        <div class="footer">
         <hr>
-    </div>
-
-    <div class="subheader">
-        <div class="cart">
-          {% with total_items=cart|length %}
-              {% if cart|length > 0 %}
-                Your cart: 
-                <a href="{% url "cart:cart_detail" %}">
-                  {{ total_items }} item{{ total_items|pluralize }},
-                  {{ cart.get_total_price }} kr.
-                </a>
-              {% else %}
-                Your cart is empty.
-              {% endif %}
-            {% endwith %}
+          {% if user.is_authenticated %}
+            <p> Hi {{ user.username }}! </p>
+            <p><a href="{% url 'logout' %}">Log out</a></p>
+          {% else %}
+            <p>You are not logged in</p>
+            <p><a href="{% url 'login' %}">Log in</a> | <a href="{% url 'signup' %}">Sign up</a></p>
+          {% endif %}
         </div>
-
-        <div class="search-container">
-            <form action="{% url 'takeaway:search' %}">
-                <input name="q" placeholder="Search" value="{{request.GET.q}}">
-                <button type="submit">Go</button>
-            </form>
-        </div>
-
-    </div>
-
-    <div class='block_content'>
-      {% block content %}
-      {% endblock %}
-    </div>
-
-    <div class="footer">
-    <br/>
-    <hr>
-      {% if user.is_authenticated %}
-        <p> Hi {{ user.username }}! </p>
-        <p><a href="{% url 'logout' %}">Log out</a></p>
-      {% else %}
-        <p>You are not logged in</p>
-        <p><a href="{% url 'login' %}">Log in</a></p>
-        <p><a href="{% url 'signup' %}">Sign up</a></p>
-      {% endif %}
     </div>
 
 </body>
