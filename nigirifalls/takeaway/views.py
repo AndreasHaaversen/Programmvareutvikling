@@ -18,6 +18,7 @@ class IndexView(generic.ListView):
         context['cart'] = Cart(self.request)
         return context
 
+
 class ThankYouView(generic.DetailView):
     model = OrderInfo
     template_name = 'takeaway/thankyou.html'

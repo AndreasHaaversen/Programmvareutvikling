@@ -5,6 +5,7 @@ from django.utils import timezone
 
 # Create your tests here.
 
+
 def create_dish(name, description, price, dish_type):
     """
     Create a question with the named parameters.
@@ -12,6 +13,7 @@ def create_dish(name, description, price, dish_type):
     return Dish.objects.create(name=name, image="index.jpg",
                                description=description,
                                price=price, dish_type=dish_type)
+
 
 class ActiveOrdersViewTests(TestCase):
 
@@ -145,6 +147,7 @@ class CancelledOrdersViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertContains(response, order.name_of_customer)
 
+
 class CollectedOrdersViewTests(TestCase):
 
     def test_view_url_exists_at_desired_location(self):
@@ -218,6 +221,7 @@ class CollectedOrdersViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertNotContains(response, order.name_of_customer)
 
+
 class EditOrderViewTests(TestCase):
     def test_view_url_exists_at_desired_location(self):
         time = timezone.now() + timezone.timedelta(minutes=31)
@@ -236,7 +240,8 @@ class EditOrderViewTests(TestCase):
                                          phone_number=46813998,
                                          pickup_time=time,
                                          status='collected')
-        response = self.client.get(reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
+        response = self.client.get(
+            reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
         self.assertEqual(response.status_code, 200)
 
     def test_view_uses_correct_template(self):
@@ -246,7 +251,8 @@ class EditOrderViewTests(TestCase):
                                          phone_number=46813998,
                                          pickup_time=time,
                                          status='collected')
-        response = self.client.get(reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
+        response = self.client.get(
+            reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
 
@@ -259,7 +265,8 @@ class EditOrderViewTests(TestCase):
                                          status='accepted')
         id = str(order.id)
         newnumber = 12345678
-        response = self.client.get(reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
+        response = self.client.get(
+            reverse('employeepanel:edit_order', kwargs={'pk': order.id}))
         self.assertContains(response, order.name_of_customer)
         response = self.client.post(reverse('employeepanel:edit_order',
                                             kwargs={'pk': order.id}),
@@ -267,21 +274,23 @@ class EditOrderViewTests(TestCase):
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertNotContains(response, newnumber)
 
+
 class EditOrderItemViewTest(TestCase):
 
     def test_edit_order_item_constraint(self):
         time = timezone.now() + timezone.timedelta(minutes=29)
         makeorder = OrderInfo.objects.create(name_of_customer='Test',
-                                         email='test@test.no',
-                                         phone_number=46813998,
-                                         pickup_time=time,
-                                         status='collected')
+                                             email='test@test.no',
+                                             phone_number=46813998,
+                                             pickup_time=time,
+                                             status='collected')
         makedish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
         orderitem = OrderItem.objects.create(order=makeorder,
                                              dish=makedish,
                                              price=makedish.price,
                                              quantity=1)
-        response = self.client.get(reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
+        response = self.client.get(
+            reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
         response = self.client.post(reverse('employeepanel:edit_order_item',
                                             kwargs={'pk': makeorder.id}),
                                     {'quantity': 33})
@@ -291,10 +300,10 @@ class EditOrderItemViewTest(TestCase):
     def test_view_url_exists_at_desired_location(self):
         time = timezone.now() + timezone.timedelta(minutes=31)
         makeorder = OrderInfo.objects.create(name_of_customer='Test',
-                                         email='test@test.no',
-                                         phone_number=46813998,
-                                         pickup_time=time,
-                                         status='collected')
+                                             email='test@test.no',
+                                             phone_number=46813998,
+                                             pickup_time=time,
+                                             status='collected')
         makedish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
         orderitem = OrderItem.objects.create(order=makeorder,
                                              dish=makedish,
@@ -306,34 +315,37 @@ class EditOrderItemViewTest(TestCase):
     def test_view_url_accessible_by_name(self):
         time = timezone.now() + timezone.timedelta(minutes=31)
         makeorder = OrderInfo.objects.create(name_of_customer='Test',
-                                         email='test@test.no',
-                                         phone_number=46813998,
-                                         pickup_time=time,
-                                         status='collected')
+                                             email='test@test.no',
+                                             phone_number=46813998,
+                                             pickup_time=time,
+                                             status='collected')
         makedish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
         orderitem = OrderItem.objects.create(order=makeorder,
                                              dish=makedish,
                                              price=makedish.price,
                                              quantity=1)
-        response = self.client.get(reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
+        response = self.client.get(
+            reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
         self.assertEqual(response.status_code, 200)
 
     def test_view_uses_correct_template(self):
         time = timezone.now() + timezone.timedelta(minutes=31)
         makeorder = OrderInfo.objects.create(name_of_customer='Test',
-                                         email='test@test.no',
-                                         phone_number=46813998,
-                                         pickup_time=time,
-                                         status='collected')
+                                             email='test@test.no',
+                                             phone_number=46813998,
+                                             pickup_time=time,
+                                             status='collected')
         makedish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
         orderitem = OrderItem.objects.create(order=makeorder,
                                              dish=makedish,
                                              price=makedish.price,
                                              quantity=1)
-        response = self.client.get(reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
+        response = self.client.get(
+            reverse('employeepanel:edit_order_item', kwargs={'pk': makeorder.id}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
-		
+
+
 class AddOrderItemViewTests(TestCase):
     def test_view_url_exists_at_desired_location(self):
         time = timezone.now() + timezone.timedelta(minutes=31)
@@ -352,7 +364,8 @@ class AddOrderItemViewTests(TestCase):
                                          phone_number=46813998,
                                          pickup_time=time,
                                          status='collected')
-        response = self.client.get(reverse('employeepanel:add_order_item', kwargs={'orderid': order.id}))
+        response = self.client.get(
+            reverse('employeepanel:add_order_item', kwargs={'orderid': order.id}))
         self.assertEqual(response.status_code, 200)
 
     def test_view_uses_correct_template(self):
@@ -362,9 +375,11 @@ class AddOrderItemViewTests(TestCase):
                                          phone_number=46813998,
                                          pickup_time=time,
                                          status='collected')
-        response = self.client.get(reverse('employeepanel:add_order_item', kwargs={'orderid': order.id}))
+        response = self.client.get(
+            reverse('employeepanel:add_order_item', kwargs={'orderid': order.id}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
+
 
 class RedirectViewTests(TestCase):
     def test_redirect(self):
