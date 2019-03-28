@@ -183,3 +183,5 @@ PRIVATE_FILE_STORAGE = 'nigirifalls.storage_backends.MediaStorage'
 # AWS S3 Public Media Upload
 AWS_PUBLIC_LOCATION = 'public'
 DEFAULT_FILE_STORAGE = 'nigirifalls.storage_backends.PublicStorage'
+
+AWS_DEFAULT_ACL = None
