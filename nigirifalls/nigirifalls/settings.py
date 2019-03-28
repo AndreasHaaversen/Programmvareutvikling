@@ -185,3 +185,6 @@ AWS_PUBLIC_LOCATION = 'public'
 DEFAULT_FILE_STORAGE = 'nigirifalls.storage_backends.PublicStorage'
 
 AWS_DEFAULT_ACL = None
+
+AWS_S3_REGION_NAME = 'eu-north-1'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
