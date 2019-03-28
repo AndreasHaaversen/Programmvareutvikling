@@ -74,6 +74,7 @@ class AddOrderItemView(CreateView):
     form_class = AddOrderItemForm
     template_name = 'employeepanel/orderedit.html'
 
+
 @require_POST
 def update_order_status(request, pk):
     order = get_object_or_404(OrderInfo, id=pk)
