@@ -357,7 +357,7 @@ class EditOrderItemViewTest(TestCase):
                                              dish=makedish,
                                              price=makedish.price,
                                              quantity=1)
-        id = str(makeorder.id)
+        id = str(orderitem.id)
         response = self.client.get('/employeepanel/order/' + id + '/edititem/')
         self.assertEqual(response.status_code, 200)
 
@@ -374,7 +374,7 @@ class EditOrderItemViewTest(TestCase):
                                              price=makedish.price,
                                              quantity=1)
         response = self.client.get(
-            reverse('employeepanel:edit_order_item', args=(makeorder.id,)))
+            reverse('employeepanel:edit_order_item', args=(orderitem.id,)))
         self.assertEqual(response.status_code, 200)
 
     def test_view_uses_correct_template(self):
@@ -390,7 +390,7 @@ class EditOrderItemViewTest(TestCase):
                                              price=makedish.price,
                                              quantity=1)
         response = self.client.get(
-            reverse('employeepanel:edit_order_item', args=(str(makeorder.id),)))
+            reverse('employeepanel:edit_order_item', args=(orderitem.id,)))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
 
