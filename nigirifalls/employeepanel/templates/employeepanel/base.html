@@ -5,29 +5,40 @@
     <title>Nigiri Falls Employee</title>
 	<link id="favicon" rel="shortcut icon" href={% static 'takeaway/images/favicon.png'%} sizes="32x32" type="image/png">
     <link rel="stylesheet" type="text/css" href="{% static 'takeaway/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% block extra_css %}
     {% endblock extra_css %}
 </head>
 
 <body>
-    <div class="header">
-        <a href=/takeaway/><img src={% static 'takeaway/images/Logo.png'%} style="width:150px;height:150px;float:left"></a>
-        <a href=/takeaway/><h1>Nigiri Falls</h1></a>
-        <ul>
-            <li><a href={% url 'employeepanel:cancelled_orders' %}>Cancelled orders</a></li>
-            <li><a href={% url 'employeepanel:collected_orders' %}>Collected orders</a></li> 
-            <li><a href={% url 'employeepanel:active_orders' %}>Active orders</a></li>
-			<li><a href={% url 'takeaway:index' %}>Home</a></li>
-        </ul> 
-        <hr>
-    </div>
+    <div class="page-container">
+        <div class="header">
+            <a href=/takeaway/><img src={% static 'takeaway/images/Logo.png'%} style="width:150px;height:150px;float:left"></a>
+            <a href=/takeaway/><h1>Nigiri Falls</h1></a>
+            <ul>
+                <li><a href={% url 'employeepanel:cancelled_orders' %}>Cancelled orders</a></li>
+                <li><a href={% url 'employeepanel:collected_orders' %}>Collected orders</a></li> 
+                <li><a href={% url 'employeepanel:active_orders' %}>Active orders</a></li>
+	    		<li><a href={% url 'takeaway:index' %}>Home</a></li>
+            </ul> 
+            <hr>
+        </div>
 
-    <div class="subheader">
+        {% if user.is_staff %}
+            {% block content %}
+            {% endblock content%}
+        {% else %}
+            <p>You must be logged in as staff to see this page.</p>
+        {% endif %}
+        <div class="footer">
+            <hr>
+                {% if user.is_authenticated %}
+                <p> Hi {{ user.username }}! </p>
+                <p><a href="{% url 'logout' %}">Log out</a></p>
+            {% else %}
+                <p>You are not logged in</p>
+                <p><a href="{% url 'login' %}">Log in</a> | <a href="{% url 'signup' %}">Sign up</a></p>
+            {% endif %}
+        </div>
     </div>
-    {% if user.is_staff %}
-        {% block content %}
-        {% endblock content%}
-    {% else %}
-        <p>You must be logged in as staff to see this page.</p>
-    {% endif %}
 </body>
