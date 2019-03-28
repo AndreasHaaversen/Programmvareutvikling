@@ -278,7 +278,7 @@ class EditOrderViewTests(TestCase):
                                          pickup_time=time,
                                          status='collected')
         id = str(order.id)
-        response = self.client.get('/employeepanel/order/edit/' + id)
+        response = self.client.get('/employeepanel/order/' + id + '/edit/')
         self.assertEqual(response.status_code, 200)
 
     def test_view_url_accessible_by_name(self):
@@ -358,7 +358,7 @@ class EditOrderItemViewTest(TestCase):
                                              price=makedish.price,
                                              quantity=1)
         id = str(makeorder.id)
-        response = self.client.get('/employeepanel/order/edititem/' + id)
+        response = self.client.get('/employeepanel/order/' + id + '/edititem/')
         self.assertEqual(response.status_code, 200)
 
     def test_view_url_accessible_by_name(self):
@@ -404,7 +404,7 @@ class AddOrderItemViewTests(TestCase):
                                          pickup_time=time,
                                          status='collected')
         id = str(order.id)
-        response = self.client.get('/employeepanel/order/additem/' + id)
+        response = self.client.get('/employeepanel/order/' + id + '/additem/')
         self.assertEqual(response.status_code, 200)
 
     def test_view_url_accessible_by_name(self):
