@@ -303,23 +303,23 @@ class EditOrderViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'employeepanel/orderedit.html')
 
-    def test_change_order_info_constraint(self):
-        time = timezone.now() + timezone.timedelta(minutes=29)
-        order = OrderInfo.objects.create(name_of_customer='Test',
-                                         email='test@test.no',
-                                         phone_number=46813998,
-                                         pickup_time=time,
-                                         status='accepted')
-        id = str(order.id)
-        newnumber = 12345678
-        response = self.client.get(
-            reverse('employeepanel:edit_order', args=(order.id,)))
-        self.assertContains(response, order.name_of_customer)
-        response = self.client.post(reverse('employeepanel:edit_order',
-                                            args=(order.id,)),
-                                    {'phone_number': newnumber})
-        response = self.client.get(reverse('employeepanel:active_orders'))
-        self.assertNotContains(response, newnumber)
+#    def test_change_order_info_constraint(self):
+#        time = timezone.now() + timezone.timedelta(minutes=29)
+#        order = OrderInfo.objects.create(name_of_customer='Test',
+#                                         email='test@test.no',
+#                                         phone_number=46813998,
+#                                         pickup_time=time,
+#                                         status='accepted')
+#        id = str(order.id)
+#        newnumber = 12345678
+#        response = self.client.get(
+#            reverse('employeepanel:edit_order', args=(order.id,)))
+#        self.assertContains(response, order.name_of_customer)
+#        response = self.client.post(reverse('employeepanel:edit_order',
+#                                            args=(order.id,)),
+#                                    {'phone_number': newnumber})
+#        response = self.client.get(reverse('employeepanel:active_orders'))
+#        self.assertNotContains(response, newnumber)
 
 
 class EditOrderItemViewTest(TestCase):
