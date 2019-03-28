@@ -23,13 +23,14 @@
             </ul> 
             <hr>
         </div>
-
-        {% if user.is_staff %}
-            {% block content %}
-            {% endblock content%}
-        {% else %}
-            <p>You must be logged in as staff to see this page.</p>
-        {% endif %}
+        <div class="block_content">
+            {% if user.is_staff %}
+                {% block content %}
+                {% endblock content%}
+            {% else %}
+                <p>You must be logged in as staff to see this page.</p>
+            {% endif %}
+        </div>
         <div class="footer">
             <hr>
                 {% if user.is_authenticated %}
