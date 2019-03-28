@@ -22,6 +22,7 @@ class UpdateOrderStatusForm(forms.ModelForm):
             'status': 'Set status to'
         }
 
+
 class OrderUpdateForm(forms.ModelForm):
 
     def clean_pickup_time(self):
@@ -75,7 +76,6 @@ class AddOrderItemForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(AddOrderItemForm, self).clean()
         self.instance.price = cleaned_data.get('dish').price
-        #self.instance.order_id = 2
 
         if cleaned_data.get('order').pickup_time < timezone.now() + datetime.timedelta(minutes=30):
             self.add_error(

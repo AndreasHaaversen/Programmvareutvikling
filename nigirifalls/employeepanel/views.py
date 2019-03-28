@@ -56,6 +56,7 @@ class CollectedOrderView(GenericOrderView):
     def get_queryset(self):
         return OrderInfo.objects.filter(status="collected")
 
+
 class EditOrderView(UpdateView):
     model = OrderInfo
     form_class = OrderUpdateForm
@@ -72,6 +73,7 @@ class AddOrderItemView(CreateView):
     model = OrderItem
     form_class = AddOrderItemForm
     template_name = 'employeepanel/orderedit.html'
+
 
 @require_POST
 def update_order_status(request, pk):

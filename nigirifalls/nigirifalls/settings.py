@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'widget_tweaks',
     'watson',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,20 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'nigirifalls@gmail.com'
 EMAIL_HOST_PASSWORD = 'PotatoTomato'
 EMAIL_USE_TLS = True
+
+# AWS S3 connection
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY', '')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY', '')
+AWS_STORAGE_BUCKET_NAME = 'nigirifallsdev'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+
+# AWS S3 Private Media Upload
+AWS_MEDIA_LOCATION = 'media'
+PRIVATE_FILE_STORAGE = 'nigirifalls.storage_backends.MediaStorage'
+
+# AWS S3 Public Media Upload
+AWS_PUBLIC_LOCATION = 'public'
+DEFAULT_FILE_STORAGE = 'nigirifalls.storage_backends.PublicStorage'
+
+AWS_DEFAULT_ACL = None

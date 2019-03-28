@@ -10,3 +10,5 @@ django-widget-tweaks
 django-bootstrap4
 weasyprint
 django-watson
+boto3
+django-storages

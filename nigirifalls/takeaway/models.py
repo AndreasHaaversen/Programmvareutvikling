@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from nigirifalls.storage_backends import MediaStorage
 import os
 
 
@@ -43,7 +44,8 @@ class Dish(models.Model):
 
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    image = models.ImageField(upload_to=get_image_path, height_field=None,
+    image = models.ImageField(storage=MediaStorage(), upload_to=get_image_path,
+                              height_field=None,
                               width_field=None, max_length=None)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     dish_type = models.CharField(max_length=7, choices=DISH_TYPE_CHOICES,
