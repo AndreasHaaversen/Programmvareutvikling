@@ -7,10 +7,15 @@
 
 {% block content %}
 	<h1>{{ viewtype }}</h1>
+	{% if messages %}
+		{% for message in messages %}
+			<div class="error"> <p> {{ message }} </p> </div>
+		{% endfor %}
+	{% endif %}
 	{% if order_list %}
 		<br>
 		<br>
-		<table>
+		<table style="margin-bottom:100px;">
 			<tr>
 				<th>Pickup time</th>
 				<th>#</th>
@@ -26,28 +31,26 @@
 		{% for order in order_list %}
 			<tr>
 				<td>{{ order.pickup_time }}</td>
-				<td>{{ order.id }} </td>
+				<td><a class "button" href="/employeepanel/order/{{ order.id }}/edit/">{{ order.id }}</a></td>
 				<td>{{ order.name_of_customer }}</td>
 				<td>{{ order.phone_number }}</td>
 				<td>
-					{% for dishes in order.dishes.all %}
-						{% if not forloop.last %}
-							<p>{{ dishes.dish.name }}</p>
-							<hr>
-						{% else %}
-							<p>{{ dishes.dish.name }}</p>
-						{% endif %}
-					{% endfor %}
+				{% for dishes in order.dishes.all %}
+					<p><a class "button" href="/employeepanel/order/{{ dishes.id }}/edititem/">{{ dishes.dish.name }}</a></p>
+					<hr>
+				{% endfor %}
+					<div class="link" style="font-size: 30px;margin:0px;text-decoration:none;">
+						<a class "button" style="text-decoration:none;margin:0px;"href="/employeepanel/order/{{ order.id }}/additem">+</a>
+					</div>
 				</td>
 				<td>
-					{% for dishes in order.dishes.all %}
-						{% if not forloop.last %}
-							<p>{{ dishes.quantity }}</p>
-							<hr>
-						{% else %}
-							<p>{{ dishes.quantity }}</p>
-						{% endif %}
-					{% endfor %}
+				{% for dishes in order.dishes.all %}
+					<p>{{ dishes.quantity }}</p>
+					<hr>
+				{% endfor %}
+					<div class="link" style="font-size: 30px;text-decoration:none;visibility:hidden;">
+						<a class "button" style="text-decoration:none;margin:0px;"href="/">+</a>
+					</div>
 				</td>
 				<td>{{ order.get_order_total }}</td>
 				<td>{{ order.comment }}</td>
