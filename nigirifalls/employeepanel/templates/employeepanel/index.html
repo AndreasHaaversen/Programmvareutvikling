@@ -56,7 +56,7 @@
 				<td>{{ order.get_status_display }}</td>
 				<td>
 					<form action="{% url 'employeepanel:update_order' order.id %}" method="post">
-						{{ update_order_status_form.as_p }}
+						{% include 'takeaway/form_util.html' with form=update_order_status_form %}
 						{% csrf_token %}
 						<input type="submit" value="Update">
 					</form>
