@@ -23,12 +23,19 @@ class UpdateOrderStatusForm(forms.ModelForm):
 class OrderUpdateForm(forms.ModelForm):
 
     def clean_pickup_time(self):
-        data = self.cleaned_data['pickup_time']
-        if timezone.now() + datetime.timedelta(minutes=30) > data:
-            raise forms.ValidationError(
-                "Pickup time must be at least 30 minutes into the future!"
-            )
-        return data
+        cleaned_data = super(OrderUpdateForm, self).clean()
+        # Remove later if not needed
+        pickup_time = cleaned_data.get('pickup_time')
+
+        if self.instance.pickup_time >= timezone.now() + datetime.timedelta(minutes=30):
+            data = self.cleaned_data['pickup_time']
+            if timezone.now() + datetime.timedelta(minutes=30) > data:
+                raise forms.ValidationError(
+                    "Pickup time must be at least 30 minutes into the future!"
+                )
+            return data
+
+        return cleaned_data
 
     def clean_phone_number(self):
         data = self.cleaned_data['phone_number']
