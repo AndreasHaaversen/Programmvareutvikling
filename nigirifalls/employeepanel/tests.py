@@ -338,9 +338,9 @@ class EditOrderItemViewTest(TestCase):
                                              price=makedish.price,
                                              quantity=1)
         response = self.client.get(
-            reverse('employeepanel:edit_order_item', args=(makeorder.id,)))
+            reverse('employeepanel:edit_order_item', args=(orderitem.id,)))
         response = self.client.post(reverse('employeepanel:edit_order_item',
-                                            args=(makeorder.id,)),
+                                            args=(orderitem.id,)),
                                     {'quantity': 33})
         response = self.client.get(reverse('employeepanel:active_orders'))
         self.assertNotContains(response, 33)
