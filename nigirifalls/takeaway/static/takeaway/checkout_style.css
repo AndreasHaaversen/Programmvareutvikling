@@ -1,3 +1,7 @@
+.block_content {
+    height: 700px;
+}
+
 .order_info {
     float:right;
     width:300px;

@@ -31,7 +31,7 @@
                 <p>You must be logged in as staff to see this page.</p>
             {% endif %}
         </div>
-        <div class="footer">
+        <footer>
             <hr>
                 {% if user.is_authenticated %}
                 <p> Hi {{ user.username }}! </p>
@@ -40,6 +40,6 @@
                 <p>You are not logged in</p>
                 <p><a href="{% url 'login' %}">Log in</a> | <a href="{% url 'signup' %}">Sign up</a></p>
             {% endif %}
-        </div>
+        </footer>
     </div>
 </body>

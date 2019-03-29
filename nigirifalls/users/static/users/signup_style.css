@@ -10,3 +10,7 @@ input[type="submit"] {
 form {
     width: 300px;
 }
+
+.block_content {
+    height: 1100px;
+}
