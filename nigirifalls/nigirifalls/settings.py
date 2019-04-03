@@ -28,7 +28,7 @@ SECRET_KEY = '_r9ls)x&58-sx&cg=w%&p6y=#&hyl3((-ez_gzq$^##le#358)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nigirifallsdev.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['nigirifallsdev.herokuapp.com', '127.0.0.1', 'localhost']
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
