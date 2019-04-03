@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.core import mail
 from takeaway.models import OrderInfo, OrderItem, Dish
+from .forms import OrderUpdateForm, AddOrderItemForm, OrderUpdateQuantityForm
 from django.utils import timezone
 from users.models import CustomUser as User
 
@@ -444,3 +445,117 @@ class RedirectViewTests(TestCase):
     def test_redirect(self):
         response = self.client.get('/employeepanel/')
         self.assertRedirects(response, reverse('employeepanel:active_orders'))
+
+
+class TestOrderUpdateForm(TestCase):
+
+    def setUp(self):
+        time = timezone.now() + timezone.timedelta(minutes=31)
+        self.order = OrderInfo.objects.create(name_of_customer='Test',
+                                              email='test@test.no',
+                                              phone_number=46813998,
+                                              pickup_time=time,
+                                              status='collected')
+
+    def test_invalid_pickup_time(self):
+        time = timezone.now() + timezone.timedelta(minutes=29)
+        form = OrderUpdateForm(data={'name_of_customer': 'Andreas',
+                                     'email': "andreas_hh_98@hotmail.no",
+                                     'phone_number': 46813998,
+                                     'pickup_time': time}, instance=self.order)
+        self.assertFalse(form.is_valid())
+
+    def test_invalid_phone_number_too_long(self):
+        time = timezone.now() + timezone.timedelta(minutes=31)
+        form = OrderUpdateForm(data={'name_of_customer': 'Andreas',
+                                     'email': "andreas_hh_98@hotmail.no",
+                                     'phone_number': 468139988,
+                                     'pickup_time': time}, instance=self.order)
+        self.assertFalse(form.is_valid())
+
+    def test_invalid_phone_number_too_short(self):
+        time = timezone.now() + timezone.timedelta(minutes=31)
+        form = OrderUpdateForm(data={'name_of_customer': 'Andreas',
+                                     'email': "andreas_hh_98@hotmail.no",
+                                     'phone_number': 4681399,
+                                     'pickup_time': time}, instance=self.order)
+        self.assertFalse(form.is_valid())
+
+    def test_valid_data(self):
+        time = timezone.now() + timezone.timedelta(minutes=31)
+        form = OrderUpdateForm(data={'name_of_customer': 'Andreas',
+                                     'email': "andreas_hh_98@hotmail.no",
+                                     'phone_number': 46813998,
+                                     'pickup_time': time}, instance=self.order)
+        self.assertTrue(form.is_valid())
+
+    def test_changing_a_locked_order(self):
+        time = timezone.now() + timezone.timedelta(minutes=29)
+        order = OrderInfo.objects.create(name_of_customer='Test',
+                                         email='test@test.no',
+                                         phone_number=46813998,
+                                         pickup_time=time,
+                                         status='collected')
+        form = OrderUpdateForm(data={'name_of_customer': 'Andreas',
+                                     'email': "andreas_hh_98@hotmail.no",
+                                     'phone_number': 46813998,
+                                     'pickup_time': time}, instance=order)
+        self.assertFalse(form.is_valid())
+
+
+class TestAddOrderItemForm(TestCase):
+
+    def test_invalid_time(self):
+        time = timezone.now() + timezone.timedelta(minutes=29)
+        order = OrderInfo.objects.create(name_of_customer='Test',
+                                         email='test@test.no',
+                                         phone_number=46813998,
+                                         pickup_time=time,
+                                         status='collected')
+        dish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
+        form = AddOrderItemForm(data={'order': order.id, 'dish': dish.id, 'quantity': 2})
+        self.assertFalse(form.is_valid())
+
+    def test_valid_time(self):
+        time = timezone.now() + timezone.timedelta(minutes=31)
+        order = OrderInfo.objects.create(name_of_customer='Test',
+                                         email='test@test.no',
+                                         phone_number=46813998,
+                                         pickup_time=time,
+                                         status='collected')
+        dish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
+        form = AddOrderItemForm(data={'order': order.id, 'dish': dish.id, 'quantity': 2})
+        self.assertTrue(form.is_valid())
+
+
+class TestOrderUpdateQuantityForm(TestCase):
+
+    def test_invalid_time(self):
+        time = timezone.now() + timezone.timedelta(minutes=29)
+        order = OrderInfo.objects.create(name_of_customer='Test',
+                                         email='test@test.no',
+                                         phone_number=46813998,
+                                         pickup_time=time,
+                                         status='collected')
+        dish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
+        orderitem = OrderItem.objects.create(order=order,
+                                             dish=dish,
+                                             price=dish.price,
+                                             quantity=1)
+        form = OrderUpdateQuantityForm(data={'quantity': 2}, instance=orderitem)
+        self.assertFalse(form.is_valid())
+
+    def test_valid_time(self):
+        time = timezone.now() + timezone.timedelta(minutes=31)
+        order = OrderInfo.objects.create(name_of_customer='Test',
+                                         email='test@test.no',
+                                         phone_number=46813998,
+                                         pickup_time=time,
+                                         status='collected')
+        dish = create_dish("Maki", "Delicious roll", 123.45, "rolls")
+        orderitem = OrderItem.objects.create(order=order,
+                                             dish=dish,
+                                             price=dish.price,
+                                             quantity=1)
+        form = OrderUpdateQuantityForm(data={'quantity': 2}, instance=orderitem)
+        self.assertTrue(form.is_valid())
