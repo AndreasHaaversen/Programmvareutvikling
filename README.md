@@ -13,7 +13,7 @@ This project was started to create a complete takeaway ordering system for the s
 This project follows the PEP8 style guide for Python code, except [E501](https://lintlyci.github.io/Flake8Rules/rules/E501.html). No specific style is used for HTML and CSS, but common sense applies. 😉
 
 ## Screenshots
-![alt text(https://i.imgur.com/xXtI9jw.png "Home page")
+![alt text](https://i.imgur.com/xXtI9jw.png "Home page")
 ## Tech/framework used
 
 **Built with**
