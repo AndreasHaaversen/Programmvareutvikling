@@ -39,7 +39,8 @@ echo "*****************************"
 echo "******** Django test ********"
 echo "*****************************"
 cd nigirifalls
-if python3 manage.py test -k; then
+if coverage run --source='.' manage.py test -k; then
+    coverage report -m
     printf 'OK - Django tests passed\n'
 else
     printf 'Failed - Django tests failed\n'
