@@ -9,7 +9,7 @@ stages:
 
 Code quality check: 
   stage: test
-  image: python:latest
+  image: python3:latest
   services:
     - postgres
   script: 
