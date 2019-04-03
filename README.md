@@ -1,6 +1,8 @@
 # Nigiri Falls Takeaway
 Handle takeaway orders with ease - Nigiri Falls Takeaway is a feature complete online takeaway ordering system for both employees and customers.
 
+This project had been configured with Continous Deployment, and is available [here](https://nigirifallsdev.herokuapp.com/).
+
 ## Motivation
 This project was started to create a complete takeaway ordering system for the sushi restaurant Nigiri Falls. It is meant to be user friendly, international and universally adaptable.
 
@@ -11,7 +13,7 @@ This project was started to create a complete takeaway ordering system for the s
 This project follows the PEP8 style guide for Python code, except [E501](https://lintlyci.github.io/Flake8Rules/rules/E501.html). No specific style is used for HTML and CSS, but common sense applies. 😉
 
 ## Screenshots
-
+![alt text](https://imgur.com/xXtI9jw "Home page")
 ## Tech/framework used
 
 **Built with**
