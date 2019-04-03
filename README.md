@@ -1,7 +1,7 @@
 # Nigiri Falls Takeaway
 Handle takeaway orders with ease - Nigiri Falls Takeaway is a feature complete online takeaway ordering system for both employees and customers.
 
-This project had been configured with Continous Deployment, and is available [here](https://nigirifallsdev.herokuapp.com/).
+This project has been configured with Continous Integration and Continous Deployment from the start, and is available [here](https://nigirifallsdev.herokuapp.com/).
 
 ## Motivation
 This project was started to create a complete takeaway ordering system for the sushi restaurant Nigiri Falls. It is meant to be user friendly, international and universally adaptable.
@@ -10,7 +10,7 @@ This project was started to create a complete takeaway ordering system for the s
 [![pipeline status](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-51/badges/master/pipeline.svg)](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-51/commits/master) [![coverage report](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-51/badges/master/coverage.svg)](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-51/commits/master)
 
 ## Code style
-This project follows the PEP8 style guide for Python code, except [E501](https://lintlyci.github.io/Flake8Rules/rules/E501.html). No specific style is used for HTML and CSS, but common sense applies. 😉
+This project follows the [PEP8](https://www.python.org/dev/peps/pep-0008/) style guide for Python code, except [E501](https://lintlyci.github.io/Flake8Rules/rules/E501.html). No specific style is used for HTML and CSS, but common sense applies. 😉
 
 ## Screenshots
 ![alt text](https://i.imgur.com/xXtI9jw.png "Home page")
