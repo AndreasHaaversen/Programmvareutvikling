@@ -6,6 +6,7 @@ echo "******** Pip dependencies ********"
 echo "**********************************"
 #pip install --upgrade pip
 pip install -r ./nigirifalls/requirements.txt
+pip install coverage
 echo "***********************************"
 echo "******** Zone install step ********"
 echo "***********************************"
