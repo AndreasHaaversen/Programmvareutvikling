@@ -29,7 +29,7 @@ This project follows the [PEP8](https://www.python.org/dev/peps/pep-0008/) style
 1. Fork the repository.
 2. Clone into it with ``git clone``.
 3. Go to ``/nigirifalls`` in your terminal of choice and run ``pip3 install -r requirements.txt`` to install dependencies.
-4. Create a AWS S3 bucket and set your credentials as local variables in your OS. Set `AWS_STORAGE_BUCKET_NAME` in `settings.py` to the name of your bucket.
+4. Create a AWS S3 bucket and set your credentials as environment variables in your OS. Set `AWS_STORAGE_BUCKET_NAME` in `settings.py` to the name of your bucket.
 5. Run ``python3 manage.py makemigrations`` and ``python3 manage.py migrate`` to create the database.
 6. Run ``python3 manage.py runserver``. A local instance of the website should be running at ``localhost:8000``.
 
